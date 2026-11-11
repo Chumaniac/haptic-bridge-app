@@ -28,3 +28,5 @@ release/
 
 # Never publish a local target directory or build-cache link
 /target
+
+/browser-dist/

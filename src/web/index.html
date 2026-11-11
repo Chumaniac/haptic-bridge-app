@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="编辑触觉模式，检查每一步的强度与持续时间。">
   <title>Haptic Bridge · 本地控制台</title>
   <link rel="stylesheet" href="/styles.css" />
   <script type="module" src="/app.js"></script>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="/" aria-label="Haptic Bridge 首页"><span class="brand-mark" aria-hidden="true">h.</span><span>Haptic Bridge<small>连接每一种可能</small></span></a>
+    <a class="brand" href="/" aria-label="Haptic Bridge 首页"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="32" height="32" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#362d29"/><g stroke="#eed8c6" fill="none" stroke-linecap="round" stroke-width="3"><path d="M6 22h5l3-11 5 19 4-22 4 15h7"/></g></svg><span>Haptic Bridge<small>设备控制台</small></span></a>
     <div class="header-actions"><span class="local-label"><span class="dot"></span>仅在本机运行</span><button id="stop-all" class="button danger" disabled>停止全部</button></div>
   </header>
   <main>

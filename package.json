@@ -27,7 +27,8 @@
     "pretest:readonly": "node scripts/readonly-view.ts",
     "test:readonly": "node scripts/readonly-browser-check.ts",
     "catalog:sync": "node scripts/sync-catalog.ts",
-    "catalog:studio-details": "node scripts/studio-catalog-details.ts"
+    "catalog:studio-details": "node scripts/studio-catalog-details.ts",
+    "build:browser": "npm run build && node scripts/build-browser.mjs"
   },
   "dependencies": {
     "@zendrex/buttplug.js": "0.5.0",
