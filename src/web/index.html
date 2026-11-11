@@ -13,7 +13,7 @@
     <div class="header-actions"><span class="local-label"><span class="dot"></span>仅在本机运行</span><button id="stop-all" class="button danger" disabled>停止全部</button></div>
   </header>
   <main>
-    <div class="intro"><div><p class="eyebrow">YOUR DEVICES, ONE PLACE</p><h1>连接，然后轻松掌控。</h1><p class="lead">从你的设备开始，在一个地方连接、调整与停止。</p></div></div>
+    <div class="intro"><div><p class="eyebrow">你的设备，集中管理</p><h1>连接，然后轻松掌控。</h1><p class="lead">从你的设备开始，在一个地方连接、调整与停止。</p></div></div>
     <div id="alert" class="alert" role="alert" hidden></div>
     <section class="overview" aria-label="当前连接概况">
       <div><span>连接状态</span><strong id="connection-status">未连接</strong></div>
@@ -22,7 +22,7 @@
     </section>
     <div class="workspace">
       <aside class="connection-panel panel">
-        <p class="eyebrow">01 / CONNECT</p><h2>选择连接方式</h2>
+        <p class="eyebrow">01 / 连接</p><h2>选择连接方式</h2>
         <p class="secondary">真实设备通过本机的 Intiface 连接。</p>
         <label class="field-label" for="vendor">设备品牌</label><select id="vendor"><option value="auto">自动识别</option></select>
         <ul id="vendor-guidance" class="vendor-guidance"><li>按设备实际能力选择连接方式。</li></ul>
@@ -35,7 +35,7 @@
         <p id="connection-message" class="connection-message" role="status">选择一种连接方式开始。</p>
       </aside>
       <section class="devices-panel panel" aria-labelledby="devices-title">
-        <div class="section-title"><div><p class="eyebrow">02 / CONTROL</p><h2 id="devices-title">我的设备</h2></div><span id="mode-badge" class="badge">尚未连接</span></div>
+        <div class="section-title"><div><p class="eyebrow">02 / 控制</p><h2 id="devices-title">我的设备</h2></div><span id="mode-badge" class="badge">尚未连接</span></div>
         <div id="demo-notice" class="demo-notice" hidden>当前为演示模式，界面上的设备与输出都是模拟数据。</div>
         <section id="diagnostic-report" class="diagnostic-report" aria-live="polite" hidden><div class="section-title"><h3 id="report-title">连接检查结果</h3><span id="report-evidence" class="badge">实机待验</span></div><ol id="check-results" class="check-results"></ol><a id="download-report" class="report-link" href="/api/diagnostics/report" download hidden>下载连接检查报告</a></section>
         <div id="empty" class="empty-state"><div class="empty-orbit" aria-hidden="true"><span></span></div><h3>设备会出现在这里</h3><p>连接本地程序并搜索设备，或先开启演示。</p></div>
@@ -45,6 +45,6 @@
     <details class="catalog-panel panel"><summary>查看兼容资料目录 <span id="catalog-summary">正在加载…</span></summary><label class="field-label" for="catalog-search">筛选品牌或设备名称</label><input id="catalog-search" type="search" placeholder="例如：Lovense、小怪兽、Satisfyer" /><p id="catalog-count" class="secondary"></p><ul id="catalog-records" class="catalog-records"></ul><button id="catalog-more" class="button secondary-button" hidden>显示更多</button><p class="secondary">目录来自公开设备配置，包含别名与通用名称；这里的资料记录不代表对应型号已完成实机验收。</p></details>
     <section class="notes" aria-label="使用说明"><div><span class="note-number">01</span><p><strong>由你启用</strong>连接后保持停止，启用控制后才可调整强度。</p></div><div><span class="note-number">02</span><p><strong>随时停止</strong>停止操作会清空待发命令，并关闭该设备的控制。</p></div><div><span class="note-number">03</span><p><strong>按设备能力展示</strong>当前支持振动电机；其他功能会显示为暂不支持。</p></div></section>
   </main>
-  <footer><span>Haptic Bridge / Local Edition</span><span>接下来：数字码配对 · 官方分享入口 · 更多设备</span></footer>
+  <footer><span>Haptic Bridge / 本地版</span><span>接下来：数字码配对 · 官方分享入口 · 更多设备</span></footer>
 </body>
 </html>
