@@ -1,0 +1,44 @@
+{
+  "name": "haptic-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local, capability-based device control with an Intiface adapter and explicit simulation mode.",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "tsc && node scripts/copy-static.mjs",
+    "check": "tsc --noEmit",
+    "start": "node dist/src/server/main.js",
+    "start:studio": "node dist/src/studio/main.js",
+    "studio": "npm run build && npm run start:studio",
+    "test:studio:browser": "node scripts/studio-browser-check.ts",
+    "test:studio:resources": "node --expose-gc scripts/studio-performance.ts",
+    "test": "node --test test/*.test.ts",
+    "test:browser": "node scripts/browser-check.ts",
+    "test:load": "node --expose-gc scripts/benchmark.ts",
+    "test:stress": "node --expose-gc scripts/stress.ts",
+    "test:soak": "node --expose-gc scripts/soak.ts",
+    "test:components": "node scripts/real-components.ts",
+    "acceptance:check": "node scripts/acceptance.ts",
+    "tools:report": "node scripts/tool-matching.ts",
+    "readonly:build": "node scripts/readonly-view.ts",
+    "pretest:readonly": "node scripts/readonly-view.ts",
+    "test:readonly": "node scripts/readonly-browser-check.ts",
+    "catalog:sync": "node scripts/sync-catalog.ts",
+    "catalog:studio-details": "node scripts/studio-catalog-details.ts"
+  },
+  "dependencies": {
+    "@zendrex/buttplug.js": "0.5.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/ws": "8.18.2",
+    "playwright": "1.64.1",
+    "typescript": "6.0.3",
+    "ws": "8.22.1"
+  },
+  "license": "MIT"
+}

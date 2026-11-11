@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+  "sha256": "2a62df9af3c4873cea592cae70b8c0cc62e10abd4eb24297ffdb7ecbfc12a567",
+  "fetchedAt": "2026-11-05T09:12:31.178Z",
+  "profiles": [
+    {
+      "id": "lovense",
+      "transports": [
+        "其他连接记录（待核对）",
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "we-vibe",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "satisfyer",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "monsterpub",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "svakom",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "lelo",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "magic-motion",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "mysteryvibe",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "tryfun",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "muse",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "joyhub",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    },
+    {
+      "id": "galaku",
+      "transports": [
+        "蓝牙 BLE"
+      ]
+    }
+  ]
+}

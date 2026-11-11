@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="theme-color" content="#191b1e" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haptic Bridge · 本地工作台</title>
+  <link rel="stylesheet" href="/studio.css" />
+  <script type="module" src="/studio.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至主要内容</a>
+  <aside class="workspace-sidebar" aria-label="Haptic Bridge 工作区">
+    <a class="brand" href="#main"><span class="brand-icon" aria-hidden="true">h.</span><span>Haptic Bridge<small>本地工作台</small></span></a>
+    <p class="workspace-caption">工作区</p>
+    <nav aria-label="页面导航"><a href="#editor">模式编辑</a><a href="#play-heading">模式播放</a><a href="#device-heading">虚拟设备</a><a href="#catalog">品牌资料</a><a href="#settings">偏好设置</a><a href="#history-heading">操作记录</a></nav>
+    <p class="workspace-footnote">本机模式库<br>仅使用固定虚拟设备</p>
+  </aside>
+  <header class="topbar">
+    <span class="workspace-title">本地工作台</span>
+    <div class="header-actions"><span class="badge">仅虚拟设备</span><button id="stop-all" class="danger" disabled>急停全部</button></div>
+  </header>
+  <main id="main">
+    <div class="intro"><div><p class="eyebrow">本地工作台</p><h1>模式与播放</h1><p class="muted">编排、播放与保存模式。这里的设备始终是虚拟设备，不连接真实硬件。</p></div></div>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    <div id="error" class="error" role="alert" hidden></div>
+    <section class="control-bar" aria-label="控制会话">
+      <div><span class="eyebrow">控制会话</span><strong id="control-status">正在连接本地服务…</strong><span id="lease" class="muted"></span></div>
+      <div class="actions"><button id="reconnect" hidden>重新连接本地服务</button><button id="claim" class="primary" disabled>获取本地控制权</button><button id="release" disabled>释放控制权</button></div>
+    </section>
+
+    <div class="work-grid">
+      <section id="editor" class="panel studio-editor" aria-labelledby="editor-heading">
+        <div class="section-heading"><div><p class="eyebrow">模式编辑</p><h2 id="editor-heading">模式编辑器</h2></div><span id="draft-state" class="badge">新模式</span></div>
+        <div class="library-picker"><label for="patterns">已保存模式</label><select id="patterns"></select><button id="load-pattern">载入模式</button><button id="new-pattern">新建</button><button id="refresh-library">刷新资料</button></div>
+        <form id="pattern-form">
+
+          <div class="section-heading compact"><h3>强度预览</h3><span id="total-duration" class="muted"></span></div>
+          <div class="timeline-stage"><span class="timeline-scale" aria-hidden="true"><i>100%</i><i>50%</i><i>0%</i></span><div id="timeline" class="timeline" role="img" aria-label="模式强度预览"></div></div><div class="timeline-caption"><span>横向宽度表示持续时长</span><span>高度表示强度</span></div>
+          <p class="hint">强度为 0–100%，每步 0.1–30 秒；最多 64 步，循环后的总时长不超过 10 分钟。</p>
+          <div class="form-grid"><label>模式名称<input id="pattern-name" required maxlength="48" autocomplete="off" value="新模式" /></label><label>循环次数<input id="pattern-cycles" type="number" min="1" max="10" step="1" required value="1" /></label></div>
+          <div class="step-head" aria-hidden="true"><span>步骤</span><span>强度 %</span><span>时长 / 秒</span><span>排序与删除</span></div>
+          <div id="steps" class="steps"></div>
+          <div class="actions editor-actions"><button id="add-step" type="button">添加步骤</button><button id="save-pattern" class="primary" type="submit" disabled>保存模式</button><button id="duplicate-pattern" type="button">另存为新模式</button><button id="delete-pattern" type="button" class="text-danger" disabled>删除已存模式</button></div>
+        </form>
+      </section>
+      <aside class="side-stack">
+        <section class="panel studio-play-panel" aria-labelledby="play-heading">
+          <p class="eyebrow">模式播放</p><h2 id="play-heading">播放已保存模式</h2>
+          <p class="hint">保存编辑后，选择已连接并启用的虚拟通道。播放期间手动强度会锁定。</p>
+          <label for="play-pattern">播放模式</label><select id="play-pattern"></select>
+          <label for="play-target">虚拟设备与通道</label><select id="play-target"><option value="virtual-one:0">单通道设备 · 通道 1</option><option value="virtual-duo:0">双通道设备 · 通道 1</option><option value="virtual-duo:1">双通道设备 · 通道 2</option></select>
+          <div class="play-status"><strong id="play-status">尚未播放</strong><span id="play-time" class="muted">等待开始</span><progress id="play-progress" max="100" value="0" aria-label="模式播放进度"></progress></div>
+          <div class="actions playback-actions"><button id="play" class="primary" disabled>开始播放</button><button id="pause" disabled>暂停</button><button id="cancel-play" disabled>取消播放</button></div>
+          <p class="hint">暂停会归零；完成、取消或急停后需要重新启用。页面隐藏后释放控制权，返回时不会自动播放。</p>
+        </section>
+        <section class="panel" aria-labelledby="file-heading"><p class="eyebrow">LOCAL LIBRARY</p><h2 id="file-heading">模式库与文件</h2><p class="hint">保存到本机文件，重启后仍可载入。导入前会预览并确认替换内容。</p><div class="file-actions"><button id="export-library">导出模式库与设置</button><button id="import-library" disabled>选择文件导入</button><input id="import-file" type="file" accept="application/json,.json" hidden /></div><p id="library-summary" class="hint"></p></section>
+      </aside>
+    </div>
+<section class="device-rack" aria-labelledby="device-heading"><div class="section-heading"><div><p class="eyebrow">虚拟设备</p><h2 id="device-heading">选择虚拟设备</h2></div><span class="muted">连接 → 启用控制 → 调整强度</span></div><div id="devices" class="device-grid"></div></section>
+    <details id="catalog" class="catalog-disclosure"><summary>品牌与型号资料（可选）</summary><section class="panel catalog-panel" aria-labelledby="catalog-heading"><div class="section-heading"><div><p class="eyebrow">型号资料</p><h2 id="catalog-heading">查找品牌与型号资料</h2></div><span class="badge">公开资料 · 实机未验证</span></div><label for="catalog-search">品牌或型号名称</label><input id="catalog-search" type="search" maxlength="120" placeholder="例如 Lovense、Satisfyer、小怪兽" /><p id="catalog-summary" class="hint"></p><div id="catalog-results" class="catalog-grid"></div><button id="catalog-more" hidden>显示更多资料</button><p class="hint">软件名称只说明资料对应关系。本工作台没有真实设备连接入口；目录记录、别名与通用名称不代表已验证的兼容型号。</p></section></details>
+    <div class="work-grid bottom-grid">
+      <section id="settings" class="panel" aria-labelledby="settings-heading"><p class="eyebrow">偏好设置</p><h2 id="settings-heading">编辑默认值</h2><p class="hint">只影响新建步骤，不修改当前设备强度，也不恢复播放。</p><form id="preferences-form"><div class="form-grid"><label>新建步骤默认强度 %<input id="default-intensity" type="number" min="0" max="100" step="1" required /></label><label>新建步骤默认时长 / 秒<input id="default-duration" type="number" min="0.1" max="30" step="0.1" required /></label></div><div class="actions"><button id="save-preferences" class="primary" type="submit" disabled>保存偏好</button><button id="reset-preferences" type="button" disabled>恢复默认偏好</button></div></form><p class="hint">模式和设置保存在本地；连接状态、控制权限和历史记录不持久保存。</p></section>
+      <section class="panel" aria-labelledby="history-heading"><div class="section-heading"><div><p class="eyebrow">本次会话</p><h2 id="history-heading">本次操作记录</h2></div><button id="export-diagnostics">导出脱敏诊断</button></div><div class="history-filters"><label>设备<select id="history-device"><option value="">全部设备</option><option value="virtual-one">单通道设备</option><option value="virtual-duo">双通道设备</option></select></label><label>操作<select id="history-action"><option value="">全部操作</option><option value="play">开始播放</option><option value="complete">播放完成</option><option value="stop">停止</option><option value="output">调整强度</option><option value="library-save">保存模式</option></select></label><button id="export-history" type="button">导出筛选记录</button></div><p id="history-count" class="hint" role="status"></p><ol id="history" class="history"></ol><p id="resource-summary" class="hint"></p><p class="hint">最多保留 120 条记录；诊断不包含会话凭据、自定义模式名称或文件内容。</p></section>
+    </div>
+  </main>
+  <footer><span>Haptic Bridge · 本地工作台</span><span>功能范围：虚拟设备、模式编辑、本地资料与配置</span></footer>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title"><h2 id="confirm-title"></h2><p id="confirm-detail"></p><div class="actions"><button id="confirm-no">取消</button><button id="confirm-yes" class="primary">确认</button></div></dialog>
+  <template id="device-template"><article class="panel device-card"><div class="section-heading"><div><h3 data-name></h3><p data-connection class="hint">未连接</p></div><span data-badge class="badge">虚拟设备</span></div><div data-channels></div><div class="actions"><button data-action="connect">连接虚拟设备</button><button data-action="arm" class="primary" disabled>启用控制</button><button data-action="stop" disabled>停止</button><button data-action="disconnect" disabled>断开</button></div></article></template>
+</body>
+</html>

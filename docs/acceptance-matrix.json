@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-11-05",
+  "product": "Haptic Bridge",
+  "candidate": { "version": "0.1.0", "sourceRevision": null, "artifactSha256": null },
+  "scope": { "authorizedDevicesOnly": true, "codeGuessingAllowed": false, "unauthorizedAccessAllowed": false, "declaredSupportFrozen": false },
+  "gates": [
+    { "id": "G01", "title": "软件基础与依赖互通", "required": true, "status": "pass", "evidence": ["artifacts/bounded-upstream-execution.json", "artifacts/real-components-result.json"], "gap": "" },
+    { "id": "G02", "title": "Intiface Central 实际程序接入", "required": true, "status": "blocked", "evidence": ["artifacts/real-fusion-status.json", "research/PUBLIC_TEST_RESOURCE_AUDIT_20261105.md"], "gap": "Central GUI未执行，Flutter/Dart环境与具名实机验收条件未就绪。原生Engine互通不能替代这一项。" },
+    { "id": "G03", "title": "Lovense 官方授权业务链路", "required": true, "status": "missing", "evidence": ["artifacts/real-fusion-status.json"], "gap": "官方API未实现；没有获授权业务闭环或实体设备结果。" },
+    { "id": "G04", "title": "真实设备功能正确性", "required": true, "status": "blocked", "evidence": ["artifacts/real-fusion-status.json"], "gap": "真实设备测试数为0，不能验证任何已声明型号的动作与实际反馈。" },
+    { "id": "G05", "title": "停止、取消、断线及恢复", "required": true, "status": "partial", "evidence": ["docs/VALIDATION.md", "artifacts/browser-result.json"], "gap": "软件状态与队列用例通过；真实硬件停止、进程退出、网络中断、休眠和恢复未验收。" },
+    { "id": "G06", "title": "授权数字码与官方分享入口", "required": true, "status": "missing", "evidence": ["docs/ARCHITECTURE.md", "README.md"], "gap": "实际配对和分享兑换尚未实现，仍为501扩展；离线来源分类不是配对成功。" },
+    { "id": "G07", "title": "品牌、型号、固件与平台兼容", "required": true, "status": "partial", "evidence": ["data/catalog.json", "artifacts/coverage.json"], "gap": "仅有139条公开协议资料和12组软件分流；声明支持范围未冻结，没有逐型号实机矩阵。" },
+    { "id": "G08", "title": "授权隔离和敏感资料保护", "required": true, "status": "partial", "evidence": ["artifacts/bounded-upstream-execution.json", "docs/BOUNDED_UPSTREAM_TESTS_20261105.md"], "gap": "本地授权边界检查通过；完整厂商授权、撤销、日志脱敏及发布构建的独立审查未完成。" },
+    { "id": "G09", "title": "真实负载与资源稳定性", "required": true, "status": "partial", "evidence": ["artifacts/stress-result.json", "artifacts/soak-result.json"], "gap": "现有压力和30秒通信均属合成环境；真实设备持续运行、延迟基线与长期CPU/RSS结论缺失。" },
+    { "id": "G10", "title": "完整用户旅程与界面反馈", "required": true, "status": "partial", "evidence": ["artifacts/browser-result.json", "artifacts/real-component-connection-report.json"], "gap": "仅验证模拟旅程和真实引擎空设备连接；未验证正常用户完成授权到真实控制的完整旅程。" },
+    { "id": "G11", "title": "安装、升级、回退与分发", "required": true, "status": "partial", "evidence": ["README.md", "THIRD_PARTY_NOTICES.md"], "gap": "已有本地启动与依赖说明；干净环境安装、构建制品、升级回退和实际打包许可复核尚未完成。" },
+    { "id": "G12", "title": "证据一致性与人工验收签核", "required": true, "status": "blocked", "evidence": ["artifacts/real-fusion-status.json", "artifacts/bounded-upstream-execution.json"], "gap": "候选源码与制品身份未冻结，无完整真实验收记录及设备所有者/验收人签核。" }
+  ]
+}

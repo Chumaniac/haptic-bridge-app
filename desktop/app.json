@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "name": "Haptic Bridge",
+  "identifier": "com.chumaniac.hapticbridge",
+  "mark": "h.",
+  "port": 19005,
+  "smokePort": 19015,
+  "mode": "process",
+  "readySelector": "main",
+  "saveSelector": "#save-pattern",
+  "launch": {
+    "executable": "{{NODE}}",
+    "arguments": [
+      "{{REPO}}/dist/src/studio/main.js"
+    ],
+    "workingDirectory": "{{REPO}}",
+    "environment": {
+      "HB_STUDIO_PORT": "19005",
+      "HB_STUDIO_OPEN": "0"
+    },
+    "healthPath": "health",
+    "healthMarker": "haptic-bridge-studio",
+    "stopOnQuit": true,
+    "smokeWorkingDirectory": "{{SMOKE_DIR}}",
+    "smokeEnvironment": {
+      "HB_STUDIO_PORT": "19015",
+      "HB_STUDIO_OPEN": "0"
+    }
+  }
+}

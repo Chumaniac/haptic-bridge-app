@@ -1,0 +1,30 @@
+node_modules/
+.agent/
+.tools/
+.local/
+dist/
+artifacts/
+.env
+.env.*
+!.env.example
+research/samples/
+research/output/
+data/.catalog-*.json
+data/.studio-transports-*.json
+*.log
+.DS_Store
+
+# Native build output
+desktop/build/
+
+# Community distribution build outputs and private runtime
+release/
+.runtime/
+*.app/
+*.sqlite3*
+*.db
+*.log
+.local/
+
+# Never publish a local target directory or build-cache link
+/target

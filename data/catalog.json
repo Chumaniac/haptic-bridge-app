@@ -1,0 +1,2283 @@
+{
+  "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+  "fetchedAt": "2026-11-05T03:19:53.902Z",
+  "sha256": "2a62df9af3c4873cea592cae70b8c0cc62e10abd4eb24297ffdb7ecbfc12a567",
+  "sourceConfigVersion": {
+    "major": 4,
+    "minor": 197
+  },
+  "protocolEntries": 139,
+  "hardwareVerified": false,
+  "profiles": [
+    {
+      "id": "lovense",
+      "name": "Lovense",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "lovense",
+        "lovense-connect-service"
+      ],
+      "models": [
+        "Loveai Dolp",
+        "Lovense Ambi",
+        "Lovense Calor",
+        "Lovense Connect Service Device",
+        "Lovense Device",
+        "Lovense Diamo",
+        "Lovense Dolce",
+        "Lovense Domi",
+        "Lovense Edge",
+        "Lovense Ferri",
+        "Lovense Flexer",
+        "Lovense Flexer (Firmware update needed)",
+        "Lovense Gemini",
+        "Lovense Gravity",
+        "Lovense Gush",
+        "Lovense Gush 2",
+        "Lovense Hush",
+        "Lovense Hyphy",
+        "Lovense Lapis",
+        "Lovense Lush",
+        "Lovense Lush Anal",
+        "Lovense Max",
+        "Lovense Mini Sex Machine",
+        "Lovense Mission",
+        "Lovense Mission 2",
+        "Lovense Nora",
+        "Lovense Osci",
+        "Lovense Osci 3",
+        "Lovense Ridge",
+        "Lovense Sex Machine",
+        "Lovense Solace",
+        "Lovense Solace Pro",
+        "Lovense Spinel",
+        "Lovense Synth",
+        "Lovense Tenera",
+        "Lovense Velvo",
+        "Lovense Vulse"
+      ]
+    },
+    {
+      "id": "we-vibe",
+      "name": "We-Vibe",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "wevibe",
+        "wevibe-8bit",
+        "wevibe-chorus"
+      ],
+      "models": [
+        "WeVibe 4 Plus",
+        "WeVibe 8-bit Device",
+        "WeVibe Bloom",
+        "WeVibe Bond",
+        "WeVibe Chorus",
+        "WeVibe Device",
+        "WeVibe Ditto",
+        "WeVibe Gala",
+        "WeVibe Jive",
+        "WeVibe Jive 2",
+        "WeVibe Melt",
+        "WeVibe Moxie",
+        "WeVibe Nova",
+        "WeVibe Nova 2",
+        "WeVibe Pivot",
+        "WeVibe Rave",
+        "WeVibe Sync",
+        "WeVibe Sync 2",
+        "WeVibe Sync Lite",
+        "WeVibe Sync O",
+        "WeVibe Vector",
+        "WeVibe Verge",
+        "WeVibe Wand",
+        "WeVibe Wand 2",
+        "WeVibe Wish"
+      ]
+    },
+    {
+      "id": "satisfyer",
+      "name": "Satisfyer",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "satisfyer"
+      ],
+      "models": [
+        "Satisfyer Air Pump Booty 5+",
+        "Satisfyer Air Pump Bunny 5+",
+        "Satisfyer Air Pump Vibrator 5+",
+        "Satisfyer Big Heat",
+        "Satisfyer Booty Absolute Beginners 5",
+        "Satisfyer Bullseye",
+        "Satisfyer Curvy 1+",
+        "Satisfyer Curvy 2+",
+        "Satisfyer Curvy 3+",
+        "Satisfyer Curvy Trinity 5+",
+        "Satisfyer Deep Diver",
+        "Satisfyer Device",
+        "Satisfyer Double Desire",
+        "Satisfyer Double Flex",
+        "Satisfyer Double Fun",
+        "Satisfyer Double Joy",
+        "Satisfyer Double Love",
+        "Satisfyer Double Lust",
+        "Satisfyer Double Wand-er",
+        "Satisfyer Dual Love",
+        "Satisfyer Dual Pleasure",
+        "Satisfyer E-Love Foreplay",
+        "Satisfyer E-Love G-Hunter",
+        "Satisfyer E-Love G-Hunter+",
+        "Satisfyer E-Love G-Spotter",
+        "Satisfyer E-Love G-Spotter+",
+        "Satisfyer E-Love Story",
+        "Satisfyer Epic Duo",
+        "Satisfyer G-Spot Flex 4+",
+        "Satisfyer G-Spot Flex 5+",
+        "Satisfyer Haute Couture+",
+        "Satisfyer Heat Climax",
+        "Satisfyer Heat Climax+",
+        "Satisfyer Heat Wave",
+        "Satisfyer Heated Affair",
+        "Satisfyer Heated Thrill",
+        "Satisfyer Hero+",
+        "Satisfyer High Fashion+",
+        "Satisfyer Hot Bunny",
+        "Satisfyer Hot Lover",
+        "Satisfyer Hot Passion",
+        "Satisfyer Hot Spot",
+        "Satisfyer Hug me",
+        "Satisfyer Intensity Plug",
+        "Satisfyer Knight+",
+        "Satisfyer Little Secret",
+        "Satisfyer Love Birds 1",
+        "Satisfyer Love Birds 2",
+        "Satisfyer Love Birds Vary",
+        "Satisfyer Love Triangle",
+        "Satisfyer Men Vibration+",
+        "Satisfyer Mighty One",
+        "Satisfyer Mini Wand-er+",
+        "Satisfyer Mono Flex",
+        "Satisfyer Newcomer+",
+        "Satisfyer Perfect Pair 4",
+        "Satisfyer Pleasure Wand+",
+        "Satisfyer Plug-ilicious 1",
+        "Satisfyer Plug-ilicious 2",
+        "Satisfyer Power Masturbator",
+        "Satisfyer Power Plug",
+        "Satisfyer Powerful One",
+        "Satisfyer Pro 2 Gen 3",
+        "Satisfyer Pro+ Wave 4",
+        "Satisfyer Prêt-à-porter+",
+        "Satisfyer Ribbed Petal",
+        "Satisfyer Rotator Plug 1+",
+        "Satisfyer Rotator Plug 2+",
+        "Satisfyer Royal One",
+        "Satisfyer Rrrolling Sensation",
+        "Satisfyer Sexy Secret",
+        "Satisfyer Shiny Petal",
+        "Satisfyer Signet Ring",
+        "Satisfyer Smooth Petal",
+        "Satisfyer Strong One",
+        "Satisfyer Sunray",
+        "Satisfyer Sweet Seal",
+        "Satisfyer Threesome 4",
+        "Satisfyer Top Secret",
+        "Satisfyer Top Secret+",
+        "Satisfyer Trendsetter",
+        "Satisfyer Tropical Tip",
+        "Satisfyer Twirling Joy",
+        "Satisfyer Twirling Pro+",
+        "Satisfyer Ultra Power Bullet 8"
+      ]
+    },
+    {
+      "id": "monsterpub",
+      "name": "小怪兽 / MonsterPub",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "libo-elle",
+        "libo-karen",
+        "libo-shark",
+        "libo-vibes",
+        "monsterpub",
+        "sexverse-v2"
+      ],
+      "models": [
+        "Duopeak Saphette",
+        "LiBo Elle",
+        "Libo Adel",
+        "Libo Carlos",
+        "Libo Elle 2",
+        "Libo Elle Device",
+        "Libo Feather",
+        "Libo Karen",
+        "Libo LaLa",
+        "Libo Lara",
+        "Libo Lily",
+        "Libo Lina",
+        "Libo Lottie",
+        "Libo LuLu",
+        "Libo Lucy",
+        "Libo Miao",
+        "Libo Selina",
+        "Libo Shark",
+        "Libo Vibes Device",
+        "Sexverse HH010",
+        "Sexverse Nolan",
+        "Sistalk MonsterHub Tornado",
+        "Sistalk MonsterPub 1P Mister Devil",
+        "Sistalk MonsterPub 2 Doctor Whale",
+        "Sistalk MonsterPub 2 Mister Devil",
+        "Sistalk MonsterPub Amazing",
+        "Sistalk MonsterPub Baby Youth Health",
+        "Sistalk MonsterPub BeatHeart",
+        "Sistalk MonsterPub Device",
+        "Sistalk MonsterPub KiniCat",
+        "Sistalk MonsterPub Magic Kiss",
+        "Sistalk MonsterPub Pop",
+        "Sistalk MonsterPub Sweet",
+        "Tracy's Dog Craybit Pro",
+        "Tracy's Dog Surreal"
+      ]
+    },
+    {
+      "id": "svakom",
+      "name": "SVAKOM",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "svakom-alex",
+        "svakom-alex-v2",
+        "svakom-avaneo",
+        "svakom-barnard",
+        "svakom-barney",
+        "svakom-dice",
+        "svakom-dt250a",
+        "svakom-iker",
+        "svakom-jordan",
+        "svakom-pulse",
+        "svakom-sam",
+        "svakom-sam2",
+        "svakom-suitcase",
+        "svakom-tarax",
+        "svakom-v1",
+        "svakom-v2",
+        "svakom-v3",
+        "svakom-v4",
+        "svakom-v5",
+        "svakom-v6"
+      ],
+      "models": [
+        "BeYourLover Kyukyu",
+        "BeYourLover Naughty Clock Sucker",
+        "BeYourLover Naughty Clock Vibrator",
+        "Coleur Dor DT250A",
+        "Coleur Dor HX029A",
+        "Coleur Dor VX045A",
+        "Coleur Dor VX236A",
+        "Fantasy Cup Barnard",
+        "Fantasy Cup Theodore",
+        "Momonii Agatha",
+        "Mutufun Barney",
+        "Svakom Alberta",
+        "Svakom Alex Neo",
+        "Svakom Alex Neo 2",
+        "Svakom Aravinda",
+        "Svakom Ava Neo",
+        "Svakom Chika",
+        "Svakom Cici 2",
+        "Svakom Cici+ 2",
+        "Svakom Coco Pro",
+        "Svakom Device",
+        "Svakom Device v2",
+        "Svakom Device v3",
+        "Svakom Device v4",
+        "Svakom Device v5",
+        "Svakom Device v6",
+        "Svakom Echo 2",
+        "Svakom Edeny",
+        "Svakom Ella",
+        "Svakom Ella Neo",
+        "Svakom Emma Neo",
+        "Svakom Emma Neo 2",
+        "Svakom Erica",
+        "Svakom Hannes Neo",
+        "Svakom Iker",
+        "Svakom Iker Neo",
+        "Svakom Jordan",
+        "Svakom Magic Suitcase",
+        "Svakom Mimiki",
+        "Svakom Mini Emma Neo",
+        "Svakom Mora Neo",
+        "Svakom Phoenix Neo",
+        "Svakom Phoenix Neo 2",
+        "Svakom Pulse Device",
+        "Svakom Pulse Galaxie",
+        "Svakom Pulse Lite Neo",
+        "Svakom Pulse Union",
+        "Svakom Sam Neo",
+        "Svakom Sam Neo 2",
+        "Svakom Sam Neo 2 Pro",
+        "Svakom Tammy Pro",
+        "Svakom Trysta Neo",
+        "Svakom Vick Neo",
+        "Svakom Vick Neo 2",
+        "Svakom Viviana",
+        "Svakom Winni 2",
+        "ToyCod Barzillai",
+        "ToyCod Clara",
+        "ToyCod Tara X",
+        "ToyCod Vanesia",
+        "Zemalia Dice for Love"
+      ]
+    },
+    {
+      "id": "lelo",
+      "name": "LELO",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "lelo-f1s",
+        "lelo-f1sv2",
+        "lelo-harmony"
+      ],
+      "models": [
+        "Lelo Enigma Double Sonic",
+        "Lelo F1s",
+        "Lelo F1s V2",
+        "Lelo F1s V3",
+        "Lelo F2S",
+        "Lelo Gigi 3",
+        "Lelo Hugo 2",
+        "Lelo Ida Wave",
+        "Lelo Liv 3",
+        "Lelo Sona 3 Cruise",
+        "Lelo Surfer 2",
+        "Lelo Switch",
+        "Lelo Tiani Harmony",
+        "Lelo Tiani Twist",
+        "Lelo Tor 3"
+      ]
+    },
+    {
+      "id": "magic-motion",
+      "name": "Magic Motion",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "magic-motion-1",
+        "magic-motion-2",
+        "magic-motion-3",
+        "magic-motion-4"
+      ],
+      "models": [
+        "Femometer Lilac",
+        "FitCute Kegel Rejuve",
+        "FunTown Caleo",
+        "FunTown Jive",
+        "G Vibe Gballs 2",
+        "G Vibe Gballs 3",
+        "LoveLife Krush",
+        "Magic Motion V1 Device",
+        "Magic Motion V2 Device",
+        "Magic Motion V4 Device",
+        "MagicMotion Awaken",
+        "MagicMotion Bobi",
+        "MagicMotion Bunny",
+        "MagicMotion Crystal",
+        "MagicMotion Dante/Candy/Rise",
+        "MagicMotion Eidolon",
+        "MagicMotion Equinox",
+        "MagicMotion Flamingo",
+        "MagicMotion Fugu",
+        "MagicMotion Kegel",
+        "MagicMotion Kegel Coach",
+        "MagicMotion Lotos",
+        "MagicMotion Nyx",
+        "MagicMotion Smart Bean",
+        "MagicMotion Smart Mini Vibe",
+        "MagicMotion Solstice",
+        "MagicMotion Solstice X",
+        "MagicMotion Sundae",
+        "MagicMotion Umi",
+        "MagicMotion Vini",
+        "MagicMotion Wand",
+        "MagicMotion Xone",
+        "MagicMotion Zenith"
+      ]
+    },
+    {
+      "id": "mysteryvibe",
+      "name": "MysteryVibe",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "mysteryvibe",
+        "mysteryvibe-v2"
+      ],
+      "models": [
+        "MysteryVibe Crescendo",
+        "MysteryVibe Crescendo 2",
+        "MysteryVibe Legato",
+        "MysteryVibe Molto",
+        "MysteryVibe Poco",
+        "MysteryVibe Tenuto",
+        "MysteryVibe Tenuto 2",
+        "MysteryVibe Tenuto Mini",
+        "Mysteryvibe Device",
+        "Mysteryvibe V2 Device"
+      ]
+    },
+    {
+      "id": "tryfun",
+      "name": "春风 / TryFun",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "tryfun",
+        "tryfun-blackhole",
+        "tryfun-meta2"
+      ],
+      "models": [
+        "TryFun Black Hole Plus",
+        "TryFun Meta 2",
+        "TryFun Rock",
+        "TryFun Surge Pro",
+        "TryFun Yuan Series"
+      ]
+    },
+    {
+      "id": "muse",
+      "name": "MuSe / Love Spouse",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "muse"
+      ],
+      "models": [
+        "Dream Lover Archer 2",
+        "Galaku Panty Vib",
+        "Muse Device"
+      ]
+    },
+    {
+      "id": "joyhub",
+      "name": "Joyhub",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "joyhub"
+      ],
+      "models": [
+        "JoyHub Angela",
+        "JoyHub Black Bull",
+        "JoyHub Cherly",
+        "JoyHub Cherly 2c",
+        "JoyHub Dallin",
+        "JoyHub Deena",
+        "JoyHub Device",
+        "JoyHub Diego",
+        "JoyHub Divers",
+        "JoyHub Dodge",
+        "JoyHub Dyllis",
+        "JoyHub Eclipse",
+        "JoyHub Edasich",
+        "JoyHub ElixirEgg",
+        "JoyHub Enam",
+        "JoyHub Euphoric",
+        "JoyHub Euphoric 2",
+        "JoyHub Euphoric3",
+        "JoyHub Explorer 2",
+        "JoyHub Fable Dragon",
+        "JoyHub Faunus",
+        "JoyHub Firedragon",
+        "JoyHub Lach",
+        "JoyHub Lagoon",
+        "JoyHub Lips",
+        "JoyHub Mace",
+        "JoyHub Mackay",
+        "JoyHub Maiden",
+        "JoyHub Marcela",
+        "JoyHub Mariner",
+        "JoyHub Markel",
+        "JoyHub Mars",
+        "JoyHub Mars Lion 2",
+        "JoyHub MarsLion",
+        "JoyHub Marshal",
+        "JoyHub Martino",
+        "JoyHub MaxSensr",
+        "JoyHub Maynor",
+        "JoyHub Mecha",
+        "JoyHub Melody",
+        "JoyHub Mighty",
+        "JoyHub Mirage 3",
+        "JoyHub Moon Horn",
+        "JoyHub Morningbuds",
+        "JoyHub Mowgli II",
+        "JoyHub Myrna",
+        "JoyHub Mysticolor",
+        "JoyHub Norma",
+        "JoyHub Pak",
+        "JoyHub Palmyra",
+        "JoyHub Panther",
+        "JoyHub Pathfinder",
+        "JoyHub Pathfinder 2",
+        "JoyHub Pathfinder 3",
+        "JoyHub Pau",
+        "JoyHub Peachy",
+        "JoyHub Peacock",
+        "JoyHub Pearlconch",
+        "JoyHub Pearlconch L",
+        "JoyHub Perseus",
+        "JoyHub Petalwish 2",
+        "JoyHub Petalwish 3",
+        "JoyHub Petite Rose",
+        "JoyHub PhoenixGP",
+        "JoyHub Piet 2",
+        "JoyHub Pinhead",
+        "JoyHub Pipes",
+        "JoyHub Pogo",
+        "JoyHub Pul",
+        "JoyHub Punch",
+        "JoyHub Pyro",
+        "JoyHub Pyt",
+        "JoyHub Rainbow",
+        "JoyHub Rayen",
+        "JoyHub Resi Ring 2",
+        "JoyHub Retro Guard",
+        "JoyHub Rhythmic 2",
+        "JoyHub Rhythmic 3",
+        "JoyHub Rhythmic 4",
+        "JoyHub Rose Love",
+        "JoyHub Rose Vore",
+        "JoyHub RoseBUD",
+        "JoyHub RoseLin",
+        "JoyHub Rosella 2",
+        "JoyHub Rosethorn 2",
+        "JoyHub Rowdy",
+        "JoyHub Rowdy 3",
+        "JoyHub Royaleye",
+        "JoyHub Ryden",
+        "JoyHub Scarlett",
+        "JoyHub Starfish",
+        "JoyHub Tanmouth",
+        "JoyHub Tarian",
+        "JoyHub Tarik",
+        "JoyHub Thermos",
+        "JoyHub Torin",
+        "JoyHub Torque",
+        "JoyHub Torrian",
+        "JoyHub Troi",
+        "JoyHub TrueForm",
+        "JoyHub TrueForm 3",
+        "JoyHub Urica Guard",
+        "JoyHub Urica Guard 2",
+        "JoyHub VBarbie",
+        "JoyHub VBarbie p",
+        "JoyHub Vase",
+        "JoyHub Vase 2",
+        "JoyHub VeeLips",
+        "JoyHub Veemy",
+        "JoyHub Veeva 2",
+        "JoyHub Vellum",
+        "JoyHub Velocity",
+        "JoyHub Velvet Rabbit",
+        "JoyHub Verax",
+        "JoyHub Verax 2",
+        "JoyHub Verax 4",
+        "JoyHub VibSiren",
+        "JoyHub VibSiren 2",
+        "JoyHub VibTrefoil",
+        "JoyHub Viball",
+        "JoyHub Victor",
+        "JoyHub Viele",
+        "JoyHub Viele 3",
+        "JoyHub Vigo",
+        "JoyHub Vince",
+        "JoyHub Violet Gale",
+        "JoyHub Violet Vine",
+        "JoyHub Virtuoso",
+        "JoyHub Virtuoso 2",
+        "JoyHub Vita",
+        "JoyHub Viv",
+        "JoyHub Viva",
+        "JoyHub Vivara",
+        "JoyHub Vivid Pulse",
+        "JoyHub Vivid Wings",
+        "JoyHub Vortex 2s",
+        "JoyHub Vortex Tongue",
+        "JoyHub Xylia"
+      ]
+    },
+    {
+      "id": "galaku",
+      "name": "Galaku",
+      "source": "https://intiface-engine-device-config.intiface.com/buttplug-device-config-v4.json",
+      "evidence": "catalog-only",
+      "protocolIds": [
+        "galaku",
+        "galaku-pump",
+        "muse"
+      ],
+      "models": [
+        "Adorime Anal Vibrator",
+        "Adorime Backy",
+        "Adorime Chastity Cage",
+        "Adorime Cock Ring",
+        "Adorime G-spot Rabbit Dildo Vibrator",
+        "Adorime Male Masturbator",
+        "Adorime Penis Helmet Vibrator",
+        "Adorime Penis Vibrator",
+        "Adorime Pink Touch",
+        "Adorime Wearable Egg Vibrator",
+        "Dream Lover Archer 2",
+        "Galaku Ace",
+        "Galaku Alice",
+        "Galaku Armoured-ONE",
+        "Galaku Athena",
+        "Galaku Aurora Aircraft Cup",
+        "Galaku Ball vibrator",
+        "Galaku Ballet Vibrator",
+        "Galaku Bell sucking",
+        "Galaku Bowling",
+        "Galaku Cannon-GT",
+        "Galaku Capsule Vibrator",
+        "Galaku Capsule lipstick",
+        "Galaku Classic vibration-absorbing AV state",
+        "Galaku Cyberpunk Airplane Cup",
+        "Galaku Device",
+        "Galaku Dimension No. 1",
+        "Galaku Donut",
+        "Galaku Dream Vibration",
+        "Galaku Erection Booster",
+        "Galaku F1 Aircraft Cup",
+        "Galaku Flirting Pen",
+        "Galaku Flower Season",
+        "Galaku Freya",
+        "Galaku Gyoyo (meaning joy)",
+        "Galaku Gyoyo-G (meaning Yue-little gourd)",
+        "Galaku Happy Vibrator",
+        "Galaku Hua Chao Brush",
+        "Galaku Ice cone miniAV stick",
+        "Galaku Joy Vibrator",
+        "Galaku Little Bullet",
+        "Galaku Little Devil",
+        "Galaku Little Dinosaur",
+        "Galaku Little Dolphin",
+        "Galaku Little Magic Box",
+        "Galaku Little Rubik's Cube",
+        "Galaku Little Turtle Stick",
+        "Galaku Little Whale",
+        "Galaku Little cute turtle",
+        "Galaku Little gourd vibrating egg",
+        "Galaku Mecha",
+        "Galaku Milly",
+        "Galaku Mitang",
+        "Galaku Mixin Controller",
+        "Galaku Miya",
+        "Galaku Nebula",
+        "Galaku New series of vibrators",
+        "Galaku Octopus glans massager",
+        "Galaku Panty Vib",
+        "Galaku Phantom",
+        "Galaku Phantom PLUS",
+        "Galaku Phantom X",
+        "Galaku Pinky stick",
+        "Galaku Queen Bee Gun",
+        "Galaku Rhino Prostate Massager",
+        "Galaku Rhinoceros Back Court",
+        "Galaku Ring vibration",
+        "Galaku Rogue Rabbit",
+        "Galaku Scepter AV Stick",
+        "Galaku Shana",
+        "Galaku Shia's Collar",
+        "Galaku Small powder cake",
+        "Galaku Starry Sky CUP",
+        "Galaku Suck the vibrator",
+        "Galaku The Second Generation of Vitality Bird",
+        "Galaku Unicorn",
+        "Galaku Unicorn Butt Plug",
+        "Galaku Unicorn II",
+        "Galaku Vision",
+        "Galaku Vitality Cat",
+        "Galaku Vitality Cute Pet",
+        "Galaku Vitality Octopus II",
+        "Galaku Vitality Strawberry",
+        "Galaku Xiao Xian Wan",
+        "Galaku Xiaobao Beans",
+        "Galaku Zaku Aircraft Cup",
+        "Galaku little kitten",
+        "Galaku mini ice cream cone",
+        "Galaku 花sai",
+        "Kisstoy Lost (Insertable)",
+        "Kisstoy Lost (Sucking)",
+        "Kisstoy Lost (Vibrating)",
+        "Muse Device",
+        "Secret Lover Betty",
+        "Secret Lover Kevin",
+        "Secret Lover Simon"
+      ]
+    }
+  ],
+  "protocols": [
+    {
+      "id": "activejoy",
+      "models": [
+        "IntoYou Remote Egg Vibrator"
+      ]
+    },
+    {
+      "id": "adrienlastic",
+      "models": [
+        "Adrien Lastic Device",
+        "Adrien Lastic Palpitation",
+        "Adrien Lastic Revelation"
+      ]
+    },
+    {
+      "id": "amorelie-joy",
+      "models": [
+        "Amorelie Joy Boogie",
+        "Amorelie Joy Cha-Cha",
+        "Amorelie Joy Device",
+        "Amorelie Joy Grow",
+        "Amorelie Joy Move",
+        "Amorelie Joy Salsa",
+        "Amorelie Joy Shimmer",
+        "Amorelie Joy Shuffle"
+      ]
+    },
+    {
+      "id": "aneros",
+      "models": [
+        "Aneros Vivi"
+      ]
+    },
+    {
+      "id": "ankni",
+      "models": [
+        "Roselex Device"
+      ]
+    },
+    {
+      "id": "bananasome",
+      "models": [
+        "Bananasome Rocket X7"
+      ]
+    },
+    {
+      "id": "cachito",
+      "models": [
+        "Cachito Device",
+        "Cachito Ice Cream",
+        "Cachito Lure Tao"
+      ]
+    },
+    {
+      "id": "cowgirl",
+      "models": [
+        "The Cowgirl",
+        "The Cowgirl Device",
+        "The Unicorn"
+      ]
+    },
+    {
+      "id": "cowgirl-cone",
+      "models": [
+        "The Cowgirl Cone"
+      ]
+    },
+    {
+      "id": "cueme",
+      "models": [
+        "Cueme Bra",
+        "Cueme Device",
+        "Cueme Mens",
+        "Cueme Womans"
+      ]
+    },
+    {
+      "id": "cupido",
+      "models": [
+        "Cupido Device"
+      ]
+    },
+    {
+      "id": "deepsire",
+      "models": [
+        "DeepSire Device",
+        "Kuirkish Imp 3"
+      ]
+    },
+    {
+      "id": "feelingso",
+      "models": [
+        "FeelingSo Flair Feel"
+      ]
+    },
+    {
+      "id": "fleshy-thrust",
+      "models": [
+        "Fleshy Thrust Sync"
+      ]
+    },
+    {
+      "id": "fluffer",
+      "models": [
+        "Fluffer Device",
+        "Fluffer G-Thing",
+        "Fluffer G2G",
+        "Fluffer Rock Hard Power Ring",
+        "MotorBunny Buck (Fluffer version)",
+        "MotorBunny Classic (Fluffer version)"
+      ]
+    },
+    {
+      "id": "foreo",
+      "models": [
+        "Foreo BEAR",
+        "Foreo BEAR 2",
+        "Foreo BEAR 2 body",
+        "Foreo BEAR 2 eyes",
+        "Foreo BEAR 2 go",
+        "Foreo BEAR mini",
+        "Foreo Device",
+        "Foreo KIWI",
+        "Foreo KIWI derma",
+        "Foreo LUNA 3",
+        "Foreo LUNA 3 men",
+        "Foreo LUNA 3 mini",
+        "Foreo LUNA 3 plus",
+        "Foreo LUNA 4",
+        "Foreo LUNA 4 men",
+        "Foreo LUNA 4 mini",
+        "Foreo LUNA 4 plus",
+        "Foreo LUNA fofo",
+        "Foreo LUNA play smart 2",
+        "Foreo UFO",
+        "Foreo UFO 2",
+        "Foreo UFO 3",
+        "Foreo UFO 3 go",
+        "Foreo UFO 3 led",
+        "Foreo UFO 3 mini",
+        "Foreo UFO mini",
+        "Foreo UFO mini 2"
+      ]
+    },
+    {
+      "id": "fox",
+      "models": [
+        "Fox Device"
+      ]
+    },
+    {
+      "id": "fredorch",
+      "models": [
+        "Fredorch Device"
+      ]
+    },
+    {
+      "id": "fredorch-rotary",
+      "models": [
+        "Fredorch Rotary Device"
+      ]
+    },
+    {
+      "id": "galaku",
+      "models": [
+        "Adorime Anal Vibrator",
+        "Adorime Backy",
+        "Adorime Chastity Cage",
+        "Adorime Cock Ring",
+        "Adorime G-spot Rabbit Dildo Vibrator",
+        "Adorime Male Masturbator",
+        "Adorime Penis Helmet Vibrator",
+        "Adorime Penis Vibrator",
+        "Adorime Pink Touch",
+        "Adorime Wearable Egg Vibrator",
+        "Galaku Ace",
+        "Galaku Alice",
+        "Galaku Armoured-ONE",
+        "Galaku Athena",
+        "Galaku Aurora Aircraft Cup",
+        "Galaku Ball vibrator",
+        "Galaku Ballet Vibrator",
+        "Galaku Bell sucking",
+        "Galaku Bowling",
+        "Galaku Cannon-GT",
+        "Galaku Capsule Vibrator",
+        "Galaku Capsule lipstick",
+        "Galaku Classic vibration-absorbing AV state",
+        "Galaku Cyberpunk Airplane Cup",
+        "Galaku Device",
+        "Galaku Dimension No. 1",
+        "Galaku Donut",
+        "Galaku Dream Vibration",
+        "Galaku Erection Booster",
+        "Galaku F1 Aircraft Cup",
+        "Galaku Flirting Pen",
+        "Galaku Flower Season",
+        "Galaku Freya",
+        "Galaku Gyoyo (meaning joy)",
+        "Galaku Gyoyo-G (meaning Yue-little gourd)",
+        "Galaku Happy Vibrator",
+        "Galaku Hua Chao Brush",
+        "Galaku Ice cone miniAV stick",
+        "Galaku Joy Vibrator",
+        "Galaku Little Bullet",
+        "Galaku Little Devil",
+        "Galaku Little Dinosaur",
+        "Galaku Little Dolphin",
+        "Galaku Little Magic Box",
+        "Galaku Little Rubik's Cube",
+        "Galaku Little Turtle Stick",
+        "Galaku Little Whale",
+        "Galaku Little cute turtle",
+        "Galaku Little gourd vibrating egg",
+        "Galaku Mecha",
+        "Galaku Milly",
+        "Galaku Mitang",
+        "Galaku Mixin Controller",
+        "Galaku Miya",
+        "Galaku Nebula",
+        "Galaku New series of vibrators",
+        "Galaku Octopus glans massager",
+        "Galaku Phantom",
+        "Galaku Phantom PLUS",
+        "Galaku Phantom X",
+        "Galaku Pinky stick",
+        "Galaku Queen Bee Gun",
+        "Galaku Rhino Prostate Massager",
+        "Galaku Rhinoceros Back Court",
+        "Galaku Ring vibration",
+        "Galaku Rogue Rabbit",
+        "Galaku Scepter AV Stick",
+        "Galaku Shana",
+        "Galaku Shia's Collar",
+        "Galaku Small powder cake",
+        "Galaku Starry Sky CUP",
+        "Galaku Suck the vibrator",
+        "Galaku The Second Generation of Vitality Bird",
+        "Galaku Unicorn",
+        "Galaku Unicorn Butt Plug",
+        "Galaku Unicorn II",
+        "Galaku Vision",
+        "Galaku Vitality Cat",
+        "Galaku Vitality Cute Pet",
+        "Galaku Vitality Octopus II",
+        "Galaku Vitality Strawberry",
+        "Galaku Xiao Xian Wan",
+        "Galaku Xiaobao Beans",
+        "Galaku Zaku Aircraft Cup",
+        "Galaku little kitten",
+        "Galaku mini ice cream cone",
+        "Galaku 花sai",
+        "Kisstoy Lost (Insertable)",
+        "Kisstoy Lost (Sucking)",
+        "Kisstoy Lost (Vibrating)",
+        "Secret Lover Betty",
+        "Secret Lover Kevin",
+        "Secret Lover Simon"
+      ]
+    },
+    {
+      "id": "galaku-pump",
+      "models": [
+        "Galaku Device",
+        "Galaku Nebula"
+      ]
+    },
+    {
+      "id": "hgod",
+      "models": [
+        "Hgod Device"
+      ]
+    },
+    {
+      "id": "hismith",
+      "models": [
+        "Hismith Capsule",
+        "Hismith G011",
+        "Hismith Pro Traveler",
+        "Hismith Sex Machine",
+        "Hismith Thrusting Cup",
+        "Hismith device",
+        "Wildolo Device"
+      ]
+    },
+    {
+      "id": "hismith-mini",
+      "models": [
+        "Auxfun Sex Machine",
+        "Eropair Cup",
+        "Eropair Rabbit Vibrator",
+        "Eropair Thrusting Vibrating Dildo",
+        "Hismith Mini Sex Machine",
+        "Hismith Mini device",
+        "Hismith Servo Sex Machine",
+        "Hismith Sex Machine",
+        "Hismith Ukulele",
+        "Kiiroo PleasureDrive",
+        "Sinloli Aston",
+        "Sinloli Automatic Sex Doll",
+        "Sinloli Cosima",
+        "Sinloli Ethel",
+        "Sinloli Piupiu"
+      ]
+    },
+    {
+      "id": "honeyplaybox",
+      "models": [
+        "Honey Play Box Anello",
+        "Honey Play Box Cyrus",
+        "Honey Play Box Device",
+        "Honey Play Box Fortexa",
+        "Honey Play Box Joi Thrust",
+        "Honey Play Box Joi Thrust 2",
+        "Honey Play Box Lili",
+        "Honey Play Box Melody",
+        "Honey Play Box Oly",
+        "Honey Play Box Oly 2",
+        "Honey Play Box Pearl 2",
+        "Honey Play Box Pleasure Pivot",
+        "Honey Play Box Puff",
+        "Honey Play Box Ryder",
+        "Honey Play Box Temp",
+        "Honey Play Box Tressa",
+        "Honey Play Box Trilux",
+        "Honey Play Box Vibrosa",
+        "Honey Play Box Vibrosa Mini"
+      ]
+    },
+    {
+      "id": "htk_bm",
+      "models": [
+        "HTK Breast Massager"
+      ]
+    },
+    {
+      "id": "itoys",
+      "models": [
+        "Defyeah Horizontal Sex Machine ASFO16",
+        "iToys Device",
+        "iToys Seagull",
+        "iToys Twinkling Stars"
+      ]
+    },
+    {
+      "id": "jejoue",
+      "models": [
+        "Je Joue Device"
+      ]
+    },
+    {
+      "id": "joyhub",
+      "models": [
+        "JoyHub Angela",
+        "JoyHub Black Bull",
+        "JoyHub Cherly",
+        "JoyHub Cherly 2c",
+        "JoyHub Dallin",
+        "JoyHub Deena",
+        "JoyHub Device",
+        "JoyHub Diego",
+        "JoyHub Divers",
+        "JoyHub Dodge",
+        "JoyHub Dyllis",
+        "JoyHub Eclipse",
+        "JoyHub Edasich",
+        "JoyHub ElixirEgg",
+        "JoyHub Enam",
+        "JoyHub Euphoric",
+        "JoyHub Euphoric 2",
+        "JoyHub Euphoric3",
+        "JoyHub Explorer 2",
+        "JoyHub Fable Dragon",
+        "JoyHub Faunus",
+        "JoyHub Firedragon",
+        "JoyHub Lach",
+        "JoyHub Lagoon",
+        "JoyHub Lips",
+        "JoyHub Mace",
+        "JoyHub Mackay",
+        "JoyHub Maiden",
+        "JoyHub Marcela",
+        "JoyHub Mariner",
+        "JoyHub Markel",
+        "JoyHub Mars",
+        "JoyHub Mars Lion 2",
+        "JoyHub MarsLion",
+        "JoyHub Marshal",
+        "JoyHub Martino",
+        "JoyHub MaxSensr",
+        "JoyHub Maynor",
+        "JoyHub Mecha",
+        "JoyHub Melody",
+        "JoyHub Mighty",
+        "JoyHub Mirage 3",
+        "JoyHub Moon Horn",
+        "JoyHub Morningbuds",
+        "JoyHub Mowgli II",
+        "JoyHub Myrna",
+        "JoyHub Mysticolor",
+        "JoyHub Norma",
+        "JoyHub Pak",
+        "JoyHub Palmyra",
+        "JoyHub Panther",
+        "JoyHub Pathfinder",
+        "JoyHub Pathfinder 2",
+        "JoyHub Pathfinder 3",
+        "JoyHub Pau",
+        "JoyHub Peachy",
+        "JoyHub Peacock",
+        "JoyHub Pearlconch",
+        "JoyHub Pearlconch L",
+        "JoyHub Perseus",
+        "JoyHub Petalwish 2",
+        "JoyHub Petalwish 3",
+        "JoyHub Petite Rose",
+        "JoyHub PhoenixGP",
+        "JoyHub Piet 2",
+        "JoyHub Pinhead",
+        "JoyHub Pipes",
+        "JoyHub Pogo",
+        "JoyHub Pul",
+        "JoyHub Punch",
+        "JoyHub Pyro",
+        "JoyHub Pyt",
+        "JoyHub Rainbow",
+        "JoyHub Rayen",
+        "JoyHub Resi Ring 2",
+        "JoyHub Retro Guard",
+        "JoyHub Rhythmic 2",
+        "JoyHub Rhythmic 3",
+        "JoyHub Rhythmic 4",
+        "JoyHub Rose Love",
+        "JoyHub Rose Vore",
+        "JoyHub RoseBUD",
+        "JoyHub RoseLin",
+        "JoyHub Rosella 2",
+        "JoyHub Rosethorn 2",
+        "JoyHub Rowdy",
+        "JoyHub Rowdy 3",
+        "JoyHub Royaleye",
+        "JoyHub Ryden",
+        "JoyHub Scarlett",
+        "JoyHub Starfish",
+        "JoyHub Tanmouth",
+        "JoyHub Tarian",
+        "JoyHub Tarik",
+        "JoyHub Thermos",
+        "JoyHub Torin",
+        "JoyHub Torque",
+        "JoyHub Torrian",
+        "JoyHub Troi",
+        "JoyHub TrueForm",
+        "JoyHub TrueForm 3",
+        "JoyHub Urica Guard",
+        "JoyHub Urica Guard 2",
+        "JoyHub VBarbie",
+        "JoyHub VBarbie p",
+        "JoyHub Vase",
+        "JoyHub Vase 2",
+        "JoyHub VeeLips",
+        "JoyHub Veemy",
+        "JoyHub Veeva 2",
+        "JoyHub Vellum",
+        "JoyHub Velocity",
+        "JoyHub Velvet Rabbit",
+        "JoyHub Verax",
+        "JoyHub Verax 2",
+        "JoyHub Verax 4",
+        "JoyHub VibSiren",
+        "JoyHub VibSiren 2",
+        "JoyHub VibTrefoil",
+        "JoyHub Viball",
+        "JoyHub Victor",
+        "JoyHub Viele",
+        "JoyHub Viele 3",
+        "JoyHub Vigo",
+        "JoyHub Vince",
+        "JoyHub Violet Gale",
+        "JoyHub Violet Vine",
+        "JoyHub Virtuoso",
+        "JoyHub Virtuoso 2",
+        "JoyHub Vita",
+        "JoyHub Viv",
+        "JoyHub Viva",
+        "JoyHub Vivara",
+        "JoyHub Vivid Pulse",
+        "JoyHub Vivid Wings",
+        "JoyHub Vortex 2s",
+        "JoyHub Vortex Tongue",
+        "JoyHub Xylia"
+      ]
+    },
+    {
+      "id": "kgoal-boost",
+      "models": [
+        "KGoal Boost"
+      ]
+    },
+    {
+      "id": "kiiroo-powershot",
+      "models": [
+        "Kiiroo PowerShot"
+      ]
+    },
+    {
+      "id": "kiiroo-prowand",
+      "models": [
+        "Kiiroo ProWand",
+        "Luxus"
+      ]
+    },
+    {
+      "id": "kiiroo-spot",
+      "models": [
+        "Kiiroo Spot"
+      ]
+    },
+    {
+      "id": "kiiroo-v1",
+      "models": [
+        "Kiiroo Onyx",
+        "Kiiroo Pearl",
+        "Kiiroo V1 Device"
+      ]
+    },
+    {
+      "id": "kiiroo-v2",
+      "models": [
+        "Fleshlight Launch",
+        "Kiiroo Onyx 2",
+        "Kiiroo v2 Device"
+      ]
+    },
+    {
+      "id": "kiiroo-v2-vibrator",
+      "models": [
+        "Kiiroo Pearl 2",
+        "Kiiroo Titan",
+        "Kiiroo V2 Vibrator Device",
+        "OhMiBod Fuse",
+        "PornHub Virtual Blowbot",
+        "PornHub Virtual Rabbit"
+      ]
+    },
+    {
+      "id": "kiiroo-v21",
+      "models": [
+        "Hot Octopuss Pulse Solo Interactive",
+        "Kiiroo Cliona",
+        "Kiiroo Pearl 2+",
+        "Kiiroo Pearl 2.1",
+        "Kiiroo Pearl 3",
+        "Kiiroo Titan 1.1",
+        "Kiiroo V2.1 Device",
+        "OhMiBod Chill",
+        "OhMiBod Esca 2",
+        "OhMiBod Foxy",
+        "OhMiBod Fuse 1.1",
+        "OhMiBod Lumen",
+        "OhMiBod NEX|2",
+        "OhMiBod NEX|3",
+        "OhMiBod Sphinx"
+      ]
+    },
+    {
+      "id": "kiiroo-v21-initialized",
+      "models": [
+        "Kiiroo Keon",
+        "Kiiroo Onyx 2.1",
+        "Kiiroo Onyx+",
+        "Kiiroo Onyx+ Realm Edition",
+        "Kiiroo V2.1 Initialized Device"
+      ]
+    },
+    {
+      "id": "kiiroo-v3",
+      "models": [
+        "Kiiroo Keon",
+        "Kiiroo V3 Device"
+      ]
+    },
+    {
+      "id": "kizuna",
+      "models": [
+        "Kizuna Smart"
+      ]
+    },
+    {
+      "id": "lelo-f1s",
+      "models": [
+        "Lelo F1s"
+      ]
+    },
+    {
+      "id": "lelo-f1sv2",
+      "models": [
+        "Lelo F1s V2",
+        "Lelo F1s V3"
+      ]
+    },
+    {
+      "id": "lelo-harmony",
+      "models": [
+        "Lelo Enigma Double Sonic",
+        "Lelo F2S",
+        "Lelo Gigi 3",
+        "Lelo Hugo 2",
+        "Lelo Ida Wave",
+        "Lelo Liv 3",
+        "Lelo Sona 3 Cruise",
+        "Lelo Surfer 2",
+        "Lelo Switch",
+        "Lelo Tiani Harmony",
+        "Lelo Tiani Twist",
+        "Lelo Tor 3"
+      ]
+    },
+    {
+      "id": "leten",
+      "models": [
+        "Leten Device"
+      ]
+    },
+    {
+      "id": "libo-elle",
+      "models": [
+        "LiBo Elle",
+        "Libo Elle 2",
+        "Libo Elle Device"
+      ]
+    },
+    {
+      "id": "libo-karen",
+      "models": [
+        "Libo Karen"
+      ]
+    },
+    {
+      "id": "libo-shark",
+      "models": [
+        "Libo Shark"
+      ]
+    },
+    {
+      "id": "libo-vibes",
+      "models": [
+        "Libo Adel",
+        "Libo Carlos",
+        "Libo Feather",
+        "Libo LaLa",
+        "Libo Lara",
+        "Libo Lily",
+        "Libo Lina",
+        "Libo Lottie",
+        "Libo LuLu",
+        "Libo Lucy",
+        "Libo Selina",
+        "Libo Vibes Device"
+      ]
+    },
+    {
+      "id": "lioness",
+      "models": [
+        "Lioness"
+      ]
+    },
+    {
+      "id": "loob",
+      "models": [
+        "Joyroid Loob"
+      ]
+    },
+    {
+      "id": "lovedistance",
+      "models": [
+        "Love Distance Device",
+        "Love Distance Grasp",
+        "Love Distance Join G",
+        "Love Distance Link",
+        "Love Distance Mag",
+        "Love Distance Range",
+        "Love Distance Reach",
+        "Love Distance Reach G",
+        "Love Distance Receive",
+        "Love Distance Span"
+      ]
+    },
+    {
+      "id": "lovehoney-desire",
+      "models": [
+        "Lovehoney Desire Knicker Vibrator",
+        "Lovehoney Desire Love Egg",
+        "Lovehoney Desire Prostate Vibrator",
+        "Lovehoney Device"
+      ]
+    },
+    {
+      "id": "lovense",
+      "models": [
+        "Loveai Dolp",
+        "Lovense Ambi",
+        "Lovense Calor",
+        "Lovense Device",
+        "Lovense Diamo",
+        "Lovense Dolce",
+        "Lovense Domi",
+        "Lovense Edge",
+        "Lovense Ferri",
+        "Lovense Flexer",
+        "Lovense Flexer (Firmware update needed)",
+        "Lovense Gemini",
+        "Lovense Gravity",
+        "Lovense Gush",
+        "Lovense Gush 2",
+        "Lovense Hush",
+        "Lovense Hyphy",
+        "Lovense Lapis",
+        "Lovense Lush",
+        "Lovense Lush Anal",
+        "Lovense Max",
+        "Lovense Mini Sex Machine",
+        "Lovense Mission",
+        "Lovense Mission 2",
+        "Lovense Nora",
+        "Lovense Osci",
+        "Lovense Osci 3",
+        "Lovense Ridge",
+        "Lovense Sex Machine",
+        "Lovense Solace",
+        "Lovense Solace Pro",
+        "Lovense Spinel",
+        "Lovense Synth",
+        "Lovense Tenera",
+        "Lovense Velvo",
+        "Lovense Vulse"
+      ]
+    },
+    {
+      "id": "lovense-connect-service",
+      "models": [
+        "Loveai Dolp",
+        "Lovense Ambi",
+        "Lovense Calor",
+        "Lovense Connect Service Device",
+        "Lovense Diamo",
+        "Lovense Dolce",
+        "Lovense Domi",
+        "Lovense Edge",
+        "Lovense Ferri",
+        "Lovense Flexer",
+        "Lovense Gemini",
+        "Lovense Gravity",
+        "Lovense Gush",
+        "Lovense Hush",
+        "Lovense Hyphy",
+        "Lovense Lapis",
+        "Lovense Lush",
+        "Lovense Max",
+        "Lovense Mission",
+        "Lovense Nora",
+        "Lovense Osci",
+        "Lovense Ridge",
+        "Lovense Sex Machine",
+        "Lovense Solace",
+        "Lovense Vulse"
+      ]
+    },
+    {
+      "id": "lovenuts",
+      "models": [
+        "Love Nut"
+      ]
+    },
+    {
+      "id": "luvmazer",
+      "models": [
+        "Luvmazer Cat Paw",
+        "Luvmazer Cock Ring",
+        "Luvmazer Dildo",
+        "Luvmazer Finger Magic",
+        "Luvmazer Interstellar"
+      ]
+    },
+    {
+      "id": "magic-motion-1",
+      "models": [
+        "Femometer Lilac",
+        "FitCute Kegel Rejuve",
+        "FunTown Caleo",
+        "G Vibe Gballs 2",
+        "G Vibe Gballs 3",
+        "Magic Motion V1 Device",
+        "MagicMotion Dante/Candy/Rise",
+        "MagicMotion Flamingo",
+        "MagicMotion Fugu",
+        "MagicMotion Kegel",
+        "MagicMotion Smart Bean",
+        "MagicMotion Smart Mini Vibe",
+        "MagicMotion Vini",
+        "MagicMotion Wand",
+        "MagicMotion Xone"
+      ]
+    },
+    {
+      "id": "magic-motion-2",
+      "models": [
+        "FunTown Jive",
+        "Magic Motion V2 Device",
+        "MagicMotion Awaken",
+        "MagicMotion Eidolon",
+        "MagicMotion Equinox",
+        "MagicMotion Solstice",
+        "MagicMotion Solstice X",
+        "MagicMotion Zenith"
+      ]
+    },
+    {
+      "id": "magic-motion-3",
+      "models": [
+        "LoveLife Krush"
+      ]
+    },
+    {
+      "id": "magic-motion-4",
+      "models": [
+        "Magic Motion V4 Device",
+        "MagicMotion Bobi",
+        "MagicMotion Bunny",
+        "MagicMotion Crystal",
+        "MagicMotion Kegel Coach",
+        "MagicMotion Lotos",
+        "MagicMotion Nyx",
+        "MagicMotion Sundae",
+        "MagicMotion Umi"
+      ]
+    },
+    {
+      "id": "mannuo",
+      "models": [
+        "ManNuo Device"
+      ]
+    },
+    {
+      "id": "maxpro",
+      "models": [
+        "MaxPro 2"
+      ]
+    },
+    {
+      "id": "meese",
+      "models": [
+        "Meese Device",
+        "Meese Modo",
+        "Meese Tera"
+      ]
+    },
+    {
+      "id": "mizzzee",
+      "models": [
+        "Mizz Zee Device"
+      ]
+    },
+    {
+      "id": "mizzzee-v2",
+      "models": [
+        "Mizz Zee Device"
+      ]
+    },
+    {
+      "id": "mizzzee-v3",
+      "models": [
+        "Mizz Zee Device"
+      ]
+    },
+    {
+      "id": "monsterpub",
+      "models": [
+        "Sistalk MonsterHub Tornado",
+        "Sistalk MonsterPub 1P Mister Devil",
+        "Sistalk MonsterPub 2 Doctor Whale",
+        "Sistalk MonsterPub 2 Mister Devil",
+        "Sistalk MonsterPub Amazing",
+        "Sistalk MonsterPub Baby Youth Health",
+        "Sistalk MonsterPub BeatHeart",
+        "Sistalk MonsterPub Device",
+        "Sistalk MonsterPub KiniCat",
+        "Sistalk MonsterPub Magic Kiss",
+        "Sistalk MonsterPub Pop",
+        "Sistalk MonsterPub Sweet",
+        "Tracy's Dog Craybit Pro",
+        "Tracy's Dog Surreal"
+      ]
+    },
+    {
+      "id": "motorbunny",
+      "models": [
+        "Motorbunny Buck",
+        "Motorbunny Classic",
+        "Motorbunny Device"
+      ]
+    },
+    {
+      "id": "muse",
+      "models": [
+        "Dream Lover Archer 2",
+        "Galaku Panty Vib",
+        "Muse Device"
+      ]
+    },
+    {
+      "id": "mymuselinkplus",
+      "models": [
+        "MyMuse Link Plus"
+      ]
+    },
+    {
+      "id": "mysteryvibe",
+      "models": [
+        "MysteryVibe Crescendo",
+        "MysteryVibe Poco",
+        "MysteryVibe Tenuto",
+        "Mysteryvibe Device"
+      ]
+    },
+    {
+      "id": "mysteryvibe-v2",
+      "models": [
+        "MysteryVibe Crescendo 2",
+        "MysteryVibe Legato",
+        "MysteryVibe Molto",
+        "MysteryVibe Tenuto 2",
+        "MysteryVibe Tenuto Mini",
+        "Mysteryvibe V2 Device"
+      ]
+    },
+    {
+      "id": "nextlevelracing",
+      "models": [
+        "Next Level Racing HF8 Haptic Gaming Pad"
+      ]
+    },
+    {
+      "id": "nexus-revo",
+      "models": [
+        "Nexus Revo Stealth"
+      ]
+    },
+    {
+      "id": "nintendo-joycon",
+      "models": [
+        "Nintendo Joycon"
+      ]
+    },
+    {
+      "id": "nobra",
+      "models": [
+        "Nobra's Silicone Dreams Toy"
+      ]
+    },
+    {
+      "id": "omobo",
+      "models": [
+        "Omobo ViVegg Vibrator"
+      ]
+    },
+    {
+      "id": "patoo",
+      "models": [
+        "Patoo Bean Sprout",
+        "Patoo Carrot",
+        "Patoo Device",
+        "Patoo Devil",
+        "Patoo Vibrator"
+      ]
+    },
+    {
+      "id": "picobong",
+      "models": [
+        "Picobong Blow hole",
+        "Picobong Device",
+        "Picobong Diver",
+        "Picobong Life guard",
+        "Picobong Surfer"
+      ]
+    },
+    {
+      "id": "pink_punch",
+      "models": [
+        "Pink Punch Device",
+        "Pink Punch Dream Bunny",
+        "Pink Punch Peacaron",
+        "Pink Punch Peachu",
+        "Pink Punch Sunset Mushroom"
+      ]
+    },
+    {
+      "id": "prettylove",
+      "models": [
+        "Pretty Love Device"
+      ]
+    },
+    {
+      "id": "realov",
+      "models": [
+        "Realov Device"
+      ]
+    },
+    {
+      "id": "realtouch",
+      "models": [
+        "RealTouch"
+      ]
+    },
+    {
+      "id": "rez-trancevibrator",
+      "models": [
+        "Rez TranceVibrator"
+      ]
+    },
+    {
+      "id": "sakuraneko",
+      "models": [
+        "Sakuraneko Device",
+        "Sakuraneko Dokidoki",
+        "Sakuraneko Koikoi",
+        "Sakuraneko Korokoro",
+        "Sakuraneko Nukunuku"
+      ]
+    },
+    {
+      "id": "satisfyer",
+      "models": [
+        "Satisfyer Air Pump Booty 5+",
+        "Satisfyer Air Pump Bunny 5+",
+        "Satisfyer Air Pump Vibrator 5+",
+        "Satisfyer Big Heat",
+        "Satisfyer Booty Absolute Beginners 5",
+        "Satisfyer Bullseye",
+        "Satisfyer Curvy 1+",
+        "Satisfyer Curvy 2+",
+        "Satisfyer Curvy 3+",
+        "Satisfyer Curvy Trinity 5+",
+        "Satisfyer Deep Diver",
+        "Satisfyer Device",
+        "Satisfyer Double Desire",
+        "Satisfyer Double Flex",
+        "Satisfyer Double Fun",
+        "Satisfyer Double Joy",
+        "Satisfyer Double Love",
+        "Satisfyer Double Lust",
+        "Satisfyer Double Wand-er",
+        "Satisfyer Dual Love",
+        "Satisfyer Dual Pleasure",
+        "Satisfyer E-Love Foreplay",
+        "Satisfyer E-Love G-Hunter",
+        "Satisfyer E-Love G-Hunter+",
+        "Satisfyer E-Love G-Spotter",
+        "Satisfyer E-Love G-Spotter+",
+        "Satisfyer E-Love Story",
+        "Satisfyer Epic Duo",
+        "Satisfyer G-Spot Flex 4+",
+        "Satisfyer G-Spot Flex 5+",
+        "Satisfyer Haute Couture+",
+        "Satisfyer Heat Climax",
+        "Satisfyer Heat Climax+",
+        "Satisfyer Heat Wave",
+        "Satisfyer Heated Affair",
+        "Satisfyer Heated Thrill",
+        "Satisfyer Hero+",
+        "Satisfyer High Fashion+",
+        "Satisfyer Hot Bunny",
+        "Satisfyer Hot Lover",
+        "Satisfyer Hot Passion",
+        "Satisfyer Hot Spot",
+        "Satisfyer Hug me",
+        "Satisfyer Intensity Plug",
+        "Satisfyer Knight+",
+        "Satisfyer Little Secret",
+        "Satisfyer Love Birds 1",
+        "Satisfyer Love Birds 2",
+        "Satisfyer Love Birds Vary",
+        "Satisfyer Love Triangle",
+        "Satisfyer Men Vibration+",
+        "Satisfyer Mighty One",
+        "Satisfyer Mini Wand-er+",
+        "Satisfyer Mono Flex",
+        "Satisfyer Newcomer+",
+        "Satisfyer Perfect Pair 4",
+        "Satisfyer Pleasure Wand+",
+        "Satisfyer Plug-ilicious 1",
+        "Satisfyer Plug-ilicious 2",
+        "Satisfyer Power Masturbator",
+        "Satisfyer Power Plug",
+        "Satisfyer Powerful One",
+        "Satisfyer Pro 2 Gen 3",
+        "Satisfyer Pro+ Wave 4",
+        "Satisfyer Prêt-à-porter+",
+        "Satisfyer Ribbed Petal",
+        "Satisfyer Rotator Plug 1+",
+        "Satisfyer Rotator Plug 2+",
+        "Satisfyer Royal One",
+        "Satisfyer Rrrolling Sensation",
+        "Satisfyer Sexy Secret",
+        "Satisfyer Shiny Petal",
+        "Satisfyer Signet Ring",
+        "Satisfyer Smooth Petal",
+        "Satisfyer Strong One",
+        "Satisfyer Sunray",
+        "Satisfyer Sweet Seal",
+        "Satisfyer Threesome 4",
+        "Satisfyer Top Secret",
+        "Satisfyer Top Secret+",
+        "Satisfyer Trendsetter",
+        "Satisfyer Tropical Tip",
+        "Satisfyer Twirling Joy",
+        "Satisfyer Twirling Pro+",
+        "Satisfyer Ultra Power Bullet 8"
+      ]
+    },
+    {
+      "id": "sayberx",
+      "models": [
+        "Sayber X-Ring",
+        "SayberX",
+        "SayberX Device"
+      ]
+    },
+    {
+      "id": "sensee",
+      "models": [
+        "Sensee Diandou Rabbit"
+      ]
+    },
+    {
+      "id": "sensee-v2",
+      "models": [
+        "Easylive Gamer",
+        "Easylive Vader",
+        "Qingnan #16",
+        "Sensee Astronaut",
+        "Sensee Capsule",
+        "Sensee Device",
+        "Sensee Dream Stick",
+        "Sensee Little Seahorse",
+        "Sensee Markel",
+        "Sensee Moonlight",
+        "Sensee No8",
+        "Sensee Voice-Interactive Female Vibrator"
+      ]
+    },
+    {
+      "id": "serveu",
+      "models": [
+        "ServeU"
+      ]
+    },
+    {
+      "id": "sexverse-lg389",
+      "models": [
+        "Sexverse LG389"
+      ]
+    },
+    {
+      "id": "sexverse-v1",
+      "models": [
+        "Cooxer Bullet Vibe",
+        "Sexverse BuCUE",
+        "Sexverse Cali",
+        "Sexverse Device",
+        "Sexverse Olis",
+        "Sexverse Rex",
+        "Sexverse Tadpole",
+        "Sexverse Una",
+        "Sexverse Upton"
+      ]
+    },
+    {
+      "id": "sexverse-v2",
+      "models": [
+        "Duopeak Saphette",
+        "Libo Miao",
+        "Sexverse HH010",
+        "Sexverse Nolan"
+      ]
+    },
+    {
+      "id": "sexverse-v3",
+      "models": [
+        "Sexverse Tay",
+        "Sexverse Tay 1",
+        "Sexverse Tay 6",
+        "Sexverse Tay 9",
+        "Sexverse Zeus"
+      ]
+    },
+    {
+      "id": "sexverse-v4",
+      "models": [
+        "Sexverse Black Knight",
+        "Sexverse Dark Knight",
+        "Sexverse G1 Vibrator",
+        "VVD Vkini"
+      ]
+    },
+    {
+      "id": "sexverse-v5",
+      "models": [
+        "Hannibal Kona",
+        "Sexverse Heart"
+      ]
+    },
+    {
+      "id": "svakom-alex",
+      "models": [
+        "Svakom Alex Neo"
+      ]
+    },
+    {
+      "id": "svakom-alex-v2",
+      "models": [
+        "Svakom Alex Neo 2"
+      ]
+    },
+    {
+      "id": "svakom-avaneo",
+      "models": [
+        "Svakom Ava Neo"
+      ]
+    },
+    {
+      "id": "svakom-barnard",
+      "models": [
+        "Fantasy Cup Barnard"
+      ]
+    },
+    {
+      "id": "svakom-barney",
+      "models": [
+        "Mutufun Barney"
+      ]
+    },
+    {
+      "id": "svakom-dice",
+      "models": [
+        "Zemalia Dice for Love"
+      ]
+    },
+    {
+      "id": "svakom-dt250a",
+      "models": [
+        "Coleur Dor DT250A"
+      ]
+    },
+    {
+      "id": "svakom-iker",
+      "models": [
+        "Svakom Iker"
+      ]
+    },
+    {
+      "id": "svakom-jordan",
+      "models": [
+        "Svakom Jordan"
+      ]
+    },
+    {
+      "id": "svakom-pulse",
+      "models": [
+        "BeYourLover Kyukyu",
+        "Coleur Dor HX029A",
+        "Coleur Dor VX045A",
+        "Momonii Agatha",
+        "Svakom Mimiki",
+        "Svakom Pulse Device",
+        "Svakom Pulse Galaxie",
+        "Svakom Pulse Lite Neo",
+        "Svakom Pulse Union"
+      ]
+    },
+    {
+      "id": "svakom-sam",
+      "models": [
+        "Svakom Sam Neo"
+      ]
+    },
+    {
+      "id": "svakom-sam2",
+      "models": [
+        "Svakom Sam Neo 2",
+        "Svakom Sam Neo 2 Pro"
+      ]
+    },
+    {
+      "id": "svakom-suitcase",
+      "models": [
+        "Coleur Dor VX236A",
+        "Svakom Magic Suitcase"
+      ]
+    },
+    {
+      "id": "svakom-tarax",
+      "models": [
+        "ToyCod Tara X"
+      ]
+    },
+    {
+      "id": "svakom-v1",
+      "models": [
+        "Svakom Device",
+        "Svakom Ella",
+        "Svakom Emma Neo",
+        "Svakom Phoenix Neo"
+      ]
+    },
+    {
+      "id": "svakom-v2",
+      "models": [
+        "Svakom Aravinda",
+        "Svakom Cici 2",
+        "Svakom Device v2",
+        "Svakom Edeny",
+        "Svakom Ella Neo",
+        "Svakom Emma Neo 2",
+        "Svakom Phoenix Neo",
+        "Svakom Tammy Pro",
+        "Svakom Vick Neo",
+        "Svakom Viviana",
+        "Svakom Winni 2",
+        "ToyCod Vanesia"
+      ]
+    },
+    {
+      "id": "svakom-v3",
+      "models": [
+        "Fantasy Cup Theodore",
+        "Svakom Alberta",
+        "Svakom Device v3",
+        "Svakom Hannes Neo",
+        "Svakom Phoenix Neo 2"
+      ]
+    },
+    {
+      "id": "svakom-v4",
+      "models": [
+        "Svakom Cici+ 2",
+        "Svakom Device v4",
+        "Svakom Erica",
+        "ToyCod Barzillai",
+        "ToyCod Clara"
+      ]
+    },
+    {
+      "id": "svakom-v5",
+      "models": [
+        "Svakom Chika",
+        "Svakom Device v5",
+        "Svakom Mini Emma Neo",
+        "Svakom Mora Neo",
+        "Svakom Trysta Neo"
+      ]
+    },
+    {
+      "id": "svakom-v6",
+      "models": [
+        "BeYourLover Naughty Clock Sucker",
+        "BeYourLover Naughty Clock Vibrator",
+        "Svakom Coco Pro",
+        "Svakom Device v6",
+        "Svakom Echo 2",
+        "Svakom Iker Neo",
+        "Svakom Vick Neo 2"
+      ]
+    },
+    {
+      "id": "synchro",
+      "models": [
+        "Synchro",
+        "Synchro Exchange"
+      ]
+    },
+    {
+      "id": "tcode-v03",
+      "models": [
+        "TCode v0.3 (Single Linear Axis)"
+      ]
+    },
+    {
+      "id": "thehandy",
+      "models": [
+        "The Handy"
+      ]
+    },
+    {
+      "id": "thehandy-v3",
+      "models": [
+        "The Handy (FW4+)",
+        "The Handy 2 Pro",
+        "The Handy 2 Standard",
+        "The Oh!"
+      ]
+    },
+    {
+      "id": "tryfun",
+      "models": [
+        "TryFun Surge Pro",
+        "TryFun Yuan Series"
+      ]
+    },
+    {
+      "id": "tryfun-blackhole",
+      "models": [
+        "TryFun Black Hole Plus",
+        "TryFun Rock"
+      ]
+    },
+    {
+      "id": "tryfun-meta2",
+      "models": [
+        "TryFun Meta 2"
+      ]
+    },
+    {
+      "id": "twerkingbutt",
+      "models": [
+        "Twerking Butt"
+      ]
+    },
+    {
+      "id": "vibcrafter",
+      "models": [
+        "VibCrafter Device",
+        "VibCrafter Harlow",
+        "VibCrafter Hayden",
+        "VibCrafter Janna",
+        "VibCrafter Nidalee"
+      ]
+    },
+    {
+      "id": "vibratissimo",
+      "models": [
+        "Vibratissimo Device",
+        "Vibratissimo Licker",
+        "Vibratissimo Rabbit"
+      ]
+    },
+    {
+      "id": "vorze-cyclone-x",
+      "models": [
+        "Vorze Cyclone X10 Device"
+      ]
+    },
+    {
+      "id": "vorze-sa",
+      "models": [
+        "Adult Festa Rocket",
+        "Vorze A10 Cyclone SA",
+        "Vorze Bach",
+        "Vorze Device",
+        "Vorze Omorfi",
+        "Vorze Piston",
+        "Vorze UFO SA",
+        "Vorze UFO TW"
+      ]
+    },
+    {
+      "id": "wetoy",
+      "models": [
+        "WeToy MiNa"
+      ]
+    },
+    {
+      "id": "wevibe",
+      "models": [
+        "WeVibe 4 Plus",
+        "WeVibe Bloom",
+        "WeVibe Device",
+        "WeVibe Ditto",
+        "WeVibe Gala",
+        "WeVibe Jive",
+        "WeVibe Nova",
+        "WeVibe Pivot",
+        "WeVibe Rave",
+        "WeVibe Sync",
+        "WeVibe Verge",
+        "WeVibe Wish"
+      ]
+    },
+    {
+      "id": "wevibe-8bit",
+      "models": [
+        "WeVibe 8-bit Device",
+        "WeVibe Bond",
+        "WeVibe Jive 2",
+        "WeVibe Melt",
+        "WeVibe Moxie",
+        "WeVibe Nova 2",
+        "WeVibe Vector",
+        "WeVibe Wand",
+        "WeVibe Wand 2"
+      ]
+    },
+    {
+      "id": "wevibe-chorus",
+      "models": [
+        "WeVibe Chorus",
+        "WeVibe Sync 2",
+        "WeVibe Sync Lite",
+        "WeVibe Sync O"
+      ]
+    },
+    {
+      "id": "xibao",
+      "models": [
+        "Xibao Smart Masturbation Cup"
+      ]
+    },
+    {
+      "id": "xinput",
+      "models": [
+        "XBox (XInput) Compatible Gamepad"
+      ]
+    },
+    {
+      "id": "xiuxiuda",
+      "models": [
+        "Xiuxiuda Device"
+      ]
+    },
+    {
+      "id": "xuanhuan",
+      "models": [
+        "Xuanhuan Masturbator"
+      ]
+    },
+    {
+      "id": "youcups",
+      "models": [
+        "Youcups Warrior II"
+      ]
+    },
+    {
+      "id": "youou",
+      "models": [
+        "Youou Wand Vibrator"
+      ]
+    },
+    {
+      "id": "zalo",
+      "models": [
+        "Zalo Device",
+        "Zalo Jeanne",
+        "Zalo King",
+        "Zalo Queen"
+      ]
+    }
+  ]
+}
