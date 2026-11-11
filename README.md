@@ -1,14 +1,22 @@
-# Haptic Bridge · 独立用户版
+<img src="browser/haptic.svg" width="56" height="56" alt="" />
 
-界面与首次使用引导默认使用中文；产品名、命令、文件名和原始业务内容保留原文。
+# Haptic Bridge
 
-在本机编辑、预览并保存有明确时长与强度边界的触觉模式。
+[![Build](https://github.com/Chumaniac/haptic-bridge-app/actions/workflows/user-edition.yml/badge.svg?branch=main)](https://github.com/Chumaniac/haptic-bridge-app/actions/workflows/user-edition.yml) [![License](https://img.shields.io/badge/license-MIT-555)](LICENSE)
 
-可视化时间线、版本冲突保护、显式启用和急停。输出控制与编辑分离，断连不会恢复启用。Studio 始终明确标注两个虚拟设备。
+把触觉模式拆成强度和时长，先看波形，再决定如何播放。
 
-这是包含完整可构建源码的社区用户仓库，不依赖原私有仓库。旧仓库的提交历史、用户数据、模型缓存和内部验收记录不在这里。
+[在线试用](https://chumaniac.github.io/haptic-bridge-app/) · [桌面下载](https://github.com/Chumaniac/haptic-bridge-app/releases)
 
-## 开始使用
+浏览器编辑器可以调整四个阶段和周期数。预览、校验和计算都在当前页面完成。
+
+## 核心功能
+
+- 修改各阶段的强度与时长，按比例绘制阶梯波形。
+- 比较单个周期与完整模式的时间，校验时长上限。
+- 在本机 Studio 保存模式，用虚拟设备演练播放与停止。
+
+## 本机快速开始
 
 前提：Node 24、npm。实体设备另需用户自行安装 Intiface Central；本版不捆绑它。
 
@@ -22,7 +30,7 @@ HB_STUDIO_FILE="$HOME/Library/Application Support/HapticBridge/studio.json" npm 
 
 浏览器只连接本机回环地址。桌面版下载与系统支持以 [Releases](https://github.com/Chumaniac/haptic-bridge-app/releases) 的实际资产为准；没有对应资产时从源码安装。桌面构建方式见 [构建说明](docs/build.md)。
 
-## 用一次完整流程
+## 操作步骤
 
 编辑模式 → 连接虚拟设备 → 获取控制权并启用 → 播放/暂停/取消 → 保存或导出模式库
 
@@ -48,3 +56,9 @@ Studio 只有两个虚拟设备。原始 Console 提供单独的 Intiface 接口
 - [参考项目与许可](docs/references.md)
 
 许可证见 [LICENSE](LICENSE)，第三方资料见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+
+## 常见问题
+
+**网页会让设备振动吗？** 网页只绘制信号。完整本机控制台的设备连接和配置要求见[使用指南](docs/user-guide.md)。
+
+[参与贡献](CONTRIBUTING.md)
