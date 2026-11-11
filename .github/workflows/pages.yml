@@ -7,6 +7,7 @@ on:
       - 'browser/**'
       - 'scripts/build-browser.mjs'
       - 'src/studio/schema.ts'
+      - 'src/studio/web/android-waveform.ts'
       - 'package*.json'
       - '.github/workflows/pages.yml'
 permissions:

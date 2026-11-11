@@ -205,7 +205,7 @@ export async function createStudio(options: { file: string; webRoot?: URL; sessi
       }
       throw new AppError('NOT_FOUND', '本地工作台没有此功能。', 404);
     }
-    const files: Record<string, [string, string]> = { '/': ['index.html', 'text/html'], '/studio.js': ['studio.js', 'text/javascript'], '/studio.css': ['studio.css', 'text/css'] };
+    const files: Record<string, [string, string]> = { '/': ['index.html', 'text/html'], '/studio.js': ['studio.js', 'text/javascript'], '/android-waveform.js': ['android-waveform.js', 'text/javascript'], '/studio.css': ['studio.css', 'text/css'] };
     const file = files[url.pathname]; requireCondition(req.method === 'GET' && file, 'NOT_FOUND', '页面不存在。', 404);
     const content = await readFile(new URL(file[0], options.webRoot ?? new URL('./web/', import.meta.url)));
     res.writeHead(200, { 'Content-Type': `${file[1]}; charset=utf-8` }); res.end(content);

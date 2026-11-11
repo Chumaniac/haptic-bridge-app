@@ -62,3 +62,7 @@ Studio 只有两个虚拟设备。原始 Console 提供单独的 Intiface 接口
 **网页会让设备振动吗？** 网页只绘制信号。完整本机控制台的设备连接和配置要求见[使用指南](docs/user-guide.md)。
 
 [参与贡献](CONTRIBUTING.md)
+
+## Android 波形参数
+
+「导出 Android 波形参数」下载当前编辑值。JSON 内的 timings（毫秒）、amplitudes（0–255）和 repeat 可用于 Android API 26+ 的 VibrationEffect.createWaveform。有限周期已经展开，repeat 固定为 −1。此操作只生成文件。

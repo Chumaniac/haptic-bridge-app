@@ -1,3 +1,4 @@
+import { androidWaveform } from './android-waveform.ts';
 import type { StudioState } from '../core.ts';
 import type { Persisted, PatternDraft, Library, Pattern } from '../schema.ts';
 
@@ -311,6 +312,14 @@ button('play').addEventListener('click', () => void action(async () => {
 }));
 button('pause').addEventListener('click', () => void action(async () => { await request('/api/playback', { action: state?.playback?.status === 'paused' ? 'resume' : 'pause' }); }));
 button('cancel-play').addEventListener('click', () => void action(async () => { generation++; clearOutputs(); await request('/api/playback', { action: 'cancel' }); }));
+button('export-android').addEventListener('click', () => {
+  try {
+    const current = readDraft();
+    const params = androidWaveform(current.steps, current.cycles);
+    download(new Blob([JSON.stringify(params,null,2)], {type:'application/json'}), 'android-waveform.json');
+    notify('已导出当前草稿的 Android 波形参数。');
+  } catch (error) { fail(error); }
+});
 button('export-library').addEventListener('click', () => void action(async () => { await downloadFrom('/api/export', 'haptic-studio-library.json'); }, '模式库已导出。导出文件包含自定义名称和设置，请自行保管。'));
 button('export-diagnostics').addEventListener('click', () => void action(async () => { await downloadFrom('/api/diagnostics', 'haptic-studio-diagnostics.json'); }, '已导出脱敏诊断。'));
 button('import-library').addEventListener('click', () => input('import-file').click());
