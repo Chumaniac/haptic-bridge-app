@@ -43,7 +43,7 @@ export function evaluateAcceptance(input: unknown, facts: AcceptanceFacts, missi
       if (gate.id === 'G08' && !facts.completeSecurityReviewVerified) reject('只有局部检查，缺少完整授权安全复核。');
       if (gate.id === 'G11' && !facts.cleanInstallVerified) reject('缺少干净环境交付证据。');
       if (gate.id === 'G12' && !facts.humanSignoffVerified) reject('缺少必要人工验收确认。');
-      if (gate.evidence.some(path => missingEvidence.includes(path))) reject('引用的证据文件不存在。');
+      if (gate.evidence.some(path => missingEvidence.includes(path))) reject('引用的证据缺失或无效。');
     }
     if (!verified) reasons.push(`${gate.id} ${reason || '门槛未通过。'}`);
     return { id: gate.id, title: gate.title, declaredStatus: gate.status, verified, reason };
