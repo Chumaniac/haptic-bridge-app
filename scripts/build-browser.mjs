@@ -5,5 +5,6 @@ await mkdir(out, {recursive:true});
 for (const file of ['index.html','style.css','editor.js','haptic.svg']) {
   await copyFile(new URL('../browser/'+file, import.meta.url), new URL(file,out));
 }
+await copyFile(new URL('../dist/src/studio/web/android-waveform.js',import.meta.url),new URL('android-waveform.js',out));
 const preset = initialLibrary().data.patterns[0];
 await writeFile(new URL('preset.js',out),'export const preset = '+JSON.stringify(preset)+';\nexport const maxDuration = '+limits.playbackMs+';\n');

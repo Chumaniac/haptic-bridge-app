@@ -3,5 +3,5 @@
 <body><header><img src="./haptic.svg" width="34" height="34" alt=""><strong>Haptic Bridge</strong><a href="https://github.com/Chumaniac/haptic-bridge-app">本机安装 ↗</a></header>
 <main><h1>波形编辑器</h1><p>设置四个阶段的强度与持续时间，查看一个周期的波形。预览只绘图，不驱动设备。</p>
 <section><h2>信号预览</h2><svg id="scope" viewBox="0 0 600 140" role="img" aria-label="单周期强度波形"><path class="grid" d="M0 20H600 M0 70H600 M0 120H600"/><path id="trace" fill="none"/></svg><output aria-live="polite">等待预览</output></section>
-<form><div class="heading"><h2>模式参数</h2><label>周期数 <input id="cycles" type="number" min="1" max="10" step="1" value="1" required></label></div><div id="steps"></div><button>预览波形</button></form>
+<form><div class="heading"><h2>模式参数</h2><label>周期数 <input id="cycles" type="number" min="1" max="10" step="1" value="1" required></label></div><div id="steps"></div><div class="wave-actions"><button>预览波形</button><button id="export-android" type="button">导出 Android 波形参数</button></div></form>
 </main><script type="module" src="./editor.js"></script></body></html>

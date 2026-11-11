@@ -1,5 +1,8 @@
 import { preset, maxDuration } from './preset.js';
 
+import { androidWaveform } from './android-waveform.js';
+
+const exportButton = document.querySelector('#export-android');
 const list = document.querySelector('#steps');
 const trace = document.querySelector('#trace');
 const output = document.querySelector('output');
@@ -21,6 +24,7 @@ const steps = preset.steps.map((step,index) => {
 const form = document.querySelector('form');
 function clear() {
   trace.removeAttribute('d');
+  exportButton.disabled = !form.checkValidity() || steps.reduce((sum,s)=>sum+s.time.valueAsNumber,0) * document.querySelector('#cycles').valueAsNumber > maxDuration;
   output.textContent = '参数已修改，请重新预览。';
 }
 function preview() {
@@ -39,6 +43,15 @@ function preview() {
   trace.setAttribute('d',points.join(' '));
   output.textContent = '单周期 '+period+' ms · 总时长 '+total+' ms';
 }
+exportButton.addEventListener('click', () => {
+  if (!form.reportValidity()) return;
+  try {
+    const params = androidWaveform(steps.map(s=>({value:s.level.valueAsNumber,durationMs:s.time.valueAsNumber})),document.querySelector('#cycles').valueAsNumber);
+    const url = URL.createObjectURL(new Blob([JSON.stringify(params,null,2)], {type:'application/json'}));
+    const link = document.createElement('a'); link.href=url; link.download='android-waveform.json'; link.click();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  } catch (error) { output.textContent=error.message; }
+});
 form.addEventListener('input',clear);
 form.addEventListener('submit',event=>{event.preventDefault();preview()});
 preview();
