@@ -30,3 +30,7 @@ release/
 /target
 
 /browser-dist/
+
+# Python desktop tooling caches
+__pycache__/
+*.py[cod]
