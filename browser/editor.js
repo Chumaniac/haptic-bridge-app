@@ -72,3 +72,7 @@ libraryButton.addEventListener('click', () => {
     output.textContent='模式已导出。在 Studio 导入前请备份当前模式库。';
   } catch (error) { output.textContent=error.message; }
 });
+
+document.querySelector('#guide-edit').onclick=()=>{const field=list.querySelector('input');field.focus();field.scrollIntoView({block:'center'});};
+document.querySelector('#guide-preview').onclick=()=>form.requestSubmit();
+document.querySelector('#guide-export').onclick=()=>{if(exportButton.disabled){preview();return;}exportButton.focus();exportButton.scrollIntoView({block:'center'});};
