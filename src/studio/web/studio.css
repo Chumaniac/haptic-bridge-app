@@ -7,3 +7,6 @@
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 
 .device-card [data-connection]::before{content:'';display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:#85786a}.device-card[data-connection=locked] [data-connection]::before{background:#a0783b}.device-card[data-connection=armed] [data-connection]::before{background:#5d7954}.device-card[data-connection=locked]{border-color:#c6ad87}.device-card[data-connection=armed]{border-color:#8fa780}
+
+/* Value labels stay legible at both zero and full intensity. Step numbers remain in the editor rows. */
+.timeline{padding-top:22px}.timeline-scale{padding-top:22px;padding-bottom:0}.timeline-value{top:-18px;left:50%;width:auto;max-width:100%;transform:translateX(-50%);padding:0 3px;border-radius:2px;background:#282626;color:#f2e8de;line-height:12px;font-weight:500;white-space:nowrap}
