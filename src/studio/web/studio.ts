@@ -393,6 +393,7 @@ window.addEventListener('pagehide', () => {
   for (const [url, timer] of objectUrls) { clearTimeout(timer); URL.revokeObjectURL(url); } objectUrls.clear();
 });
 window.addEventListener('pageshow', event => { if (event.persisted) { destroying = false; online = false; session = ''; csrf = ''; state = null; renderState(); void bootstrap().then(() => poll()); } });
+button('open-studio-guide').addEventListener('click',()=>{const guide=el<HTMLDetailsElement>('studio-guide');guide.open=true;guide.querySelector<HTMLElement>('summary')?.focus();guide.scrollIntoView({block:'start',behavior:'auto'});});
 renderEditor();
 await bootstrap();
 void poll();
@@ -400,5 +401,3 @@ void poll();
 const catalogDisclosure = el<HTMLDetailsElement>('catalog');
 document.querySelector<HTMLAnchorElement>('a[href="#catalog"]')?.addEventListener('click', () => { catalogDisclosure.open = true; });
 if (location.hash === '#catalog') catalogDisclosure.open = true;
-
-button('open-studio-guide').addEventListener('click',()=>{const guide=el<HTMLDetailsElement>('studio-guide');guide.open=true;guide.querySelector<HTMLElement>('summary')?.focus();guide.scrollIntoView({block:'start',behavior:'auto'});});
