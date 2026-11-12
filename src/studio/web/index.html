@@ -19,19 +19,20 @@
   </aside>
   <header class="topbar">
     <span class="workspace-title">本地工作台</span>
-    <div class="header-actions"><span class="badge">仅虚拟设备</span><button id="stop-all" class="danger" disabled>急停全部</button></div>
+    <div class="header-actions"><button id="open-studio-guide" type="button">使用引导</button><span class="badge">仅虚拟设备</span><button id="stop-all" class="danger" disabled>急停全部</button></div>
   </header>
   <main id="main">
-    <div class="intro"><div><p class="eyebrow">本地工作台</p><h1>模式与播放</h1><p class="muted">编排、播放与保存模式。这里的设备始终是虚拟设备，不连接真实硬件。</p></div></div>
+    <div class="intro"><div><p class="eyebrow">本地工作台</p><h1>模式与播放</h1><p class="muted">为触觉交互原型编排强度与节奏，保存模式后在虚拟通道上演练播放和停止。输入模式参数，得到波形、进度与可导出的本机模式库；这里不连接真实硬件。</p></div></div>
+    <details id="studio-guide" class="studio-guide"><summary>第一次虚拟播放：先保存，再连接并启用</summary><ol><li><strong>准备一个已保存模式</strong><p>在编辑器填写名称、强度、时长与周期，检查预览后保存。当前草稿与播放列表分开，播放的是所选已保存模式。</p><a href="#editor">去编辑和保存模式</a></li><li><strong>让这个窗口获得控制</strong><p>点击“获取本地控制权”，再到设备卡片连接虚拟设备并“启用控制”。控制权只属于一个窗口，不随模式文件导入。</p><a href="#control-heading">查看控制会话</a> · <a href="#device-heading">查看虚拟设备</a></li><li><strong>选择通道并播放</strong><p>选已存模式与虚拟通道，按就绪提示开始。可暂停、取消或急停；停止后要重新启用，返回页面不会自动恢复输出。</p><a href="#play-heading">去播放与停止区域</a></li></ol></details>
     <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
     <div id="error" class="error" role="alert" hidden></div>
-    <section id="control-heading" class="control-bar" aria-label="控制会话">
+    <section id="control-heading" tabindex="-1" class="control-bar" aria-label="控制会话">
       <div><span class="eyebrow">控制会话</span><strong id="control-status">正在连接本地服务…</strong><span id="lease" class="muted"></span></div>
       <div class="actions"><button id="reconnect" hidden>重新连接本地服务</button><button id="claim" class="primary" disabled>获取本地控制权</button><button id="release" disabled>释放控制权</button></div>
     </section>
 
     <div class="work-grid">
-      <section id="editor" class="panel studio-editor" aria-labelledby="editor-heading">
+      <section id="editor" tabindex="-1" class="panel studio-editor" aria-labelledby="editor-heading">
         <div class="section-heading"><div><p class="eyebrow">模式编辑</p><h2 id="editor-heading">模式编辑器</h2></div><span id="draft-state" class="badge">新模式</span></div>
         <div class="library-picker"><label for="patterns">已保存模式</label><select id="patterns"></select><button id="load-pattern">载入模式</button><button id="new-pattern">新建</button><button id="refresh-library">刷新资料</button></div>
         <form id="pattern-form">
@@ -47,7 +48,7 @@
       </section>
       <aside class="side-stack">
         <section class="panel studio-play-panel" aria-labelledby="play-heading">
-          <p class="eyebrow">模式播放</p><h2 id="play-heading">播放已保存模式</h2>
+          <p class="eyebrow">模式播放</p><h2 id="play-heading" tabindex="-1">播放已保存模式</h2>
           <p class="hint">保存编辑后，选择已连接并启用的虚拟通道。播放期间手动强度会锁定。</p>
           <label for="play-pattern">播放模式</label><select id="play-pattern"></select>
           <label for="play-target">虚拟设备与通道</label><select id="play-target"><option value="virtual-one:0">单通道设备 · 通道 1</option><option value="virtual-duo:0">双通道设备 · 通道 1</option><option value="virtual-duo:1">双通道设备 · 通道 2</option></select>
@@ -55,7 +56,7 @@
           <p id="play-requirement" class="play-requirement" role="status" aria-live="polite"></p><div class="actions playback-actions"><button id="play" class="primary" disabled>开始播放</button><button id="pause" disabled>暂停</button><button id="cancel-play" disabled>取消播放</button></div>
           <p class="hint">暂停会归零；完成、取消或急停后需要重新启用。页面隐藏后释放控制权，返回时不会自动播放。</p>
         </section>
-        <section class="device-rack" aria-labelledby="device-heading"><div class="section-heading"><div><p class="eyebrow">虚拟设备</p><h2 id="device-heading">选择虚拟设备</h2></div><span class="muted">连接 → 启用控制 → 调整强度</span></div><div id="devices" class="device-grid"></div></section><section class="panel" aria-labelledby="file-heading"><p class="eyebrow">本地模式库</p><h2 id="file-heading">模式库与文件</h2><p class="hint">保存到本机文件，重启后仍可载入。导入前会预览并确认替换内容。</p><div class="file-actions"><button id="export-library">导出模式库与设置</button><button id="import-library" disabled>选择文件导入</button><input id="import-file" type="file" accept="application/json,.json" hidden /></div><p id="library-summary" class="hint"></p></section>
+        <section class="device-rack" aria-labelledby="device-heading"><div class="section-heading"><div><p class="eyebrow">虚拟设备</p><h2 id="device-heading" tabindex="-1">选择虚拟设备</h2></div><span class="muted">连接 → 启用控制 → 调整强度</span></div><div id="devices" class="device-grid"></div></section><section class="panel" aria-labelledby="file-heading"><p class="eyebrow">本地模式库</p><h2 id="file-heading">模式库与文件</h2><p class="hint">保存到本机文件，重启后仍可载入。导入前会预览并确认替换内容。</p><div class="file-actions"><button id="export-library">导出模式库与设置</button><button id="import-library" disabled>选择文件导入</button><input id="import-file" type="file" accept="application/json,.json" hidden /></div><p id="library-summary" class="hint"></p></section>
       </aside>
     </div>
 
