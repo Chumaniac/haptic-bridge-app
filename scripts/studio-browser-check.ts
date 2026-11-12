@@ -24,6 +24,24 @@ async function confirm(label: string): Promise<void> { await page.getByRole('dia
 const single = page.locator('[data-device="virtual-one"]'); const duo = page.locator('[data-device="virtual-duo"]');
 const patternName = '<b>本地验收</b>';
 try {
+  // Navigation help stays usable while the local service is still responding.
+  let releaseSession: () => void = () => {};
+  let sessionRequested = false;
+  const delayedSession = new Promise<void>(resolve => { releaseSession = resolve; });
+  await page.route('**/api/session', async route => { sessionRequested = true; await delayedSession; await route.continue(); });
+  try {
+    await page.goto(url, { waitUntil: 'commit' });
+    await until(() => sessionRequested, 'first local session request');
+    await page.getByRole('button', { name: '使用引导', exact: true }).click();
+    await page.waitForFunction(() => (document.querySelector('#studio-guide') as HTMLDetailsElement).open, undefined, { timeout: 800 });
+    assert.equal(state().control.busy, false);
+    assert.ok(state().devices.every(item => !item.connected && !item.armed));
+    scenarios.push('guide-opens-before-session-without-control');
+  } finally {
+    const response = page.waitForResponse(response => response.url() === `${url}/api/session`);
+    releaseSession(); await response; await page.waitForLoadState('networkidle');
+    await page.unroute('**/api/session');
+  }
   const sessionResponse = page.waitForResponse(response => response.url() === `${url}/api/session`);
   await page.goto(url); const ownerSession = await (await sessionResponse).json() as { session: string; csrf: string };
   await page.getByText('只读状态，获取控制权后开始', { exact: true }).waitFor();
