@@ -188,8 +188,7 @@ function updatePreview(): void {
   const bars = draft.steps.map((step, index) => {
     const bar = text('span', ''); bar.style.setProperty('--strength', String(Math.min(100, Math.max(0, step.value || 0)))); bar.style.setProperty('--duration', String(step.durationMs || 100)); bar.title = `第 ${index + 1} 步：${step.value}% · ${step.durationMs / 1000} 秒`;
     if (draft.steps.length <= 8) {
-      const order = text('i', String(index + 1).padStart(2, '0'), 'timeline-index'); order.setAttribute('aria-hidden', 'true');
-      const value = text('b', Number.isFinite(step.value) ? `${step.value}%` : '—', 'timeline-value'); value.setAttribute('aria-hidden', 'true'); bar.append(order, value);
+      const value = text('b', Number.isFinite(step.value) ? `${step.value}%` : '—', 'timeline-value'); value.setAttribute('aria-hidden', 'true'); bar.append(value);
     }
     return bar;
   });
