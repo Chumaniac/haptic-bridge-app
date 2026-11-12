@@ -144,6 +144,9 @@ function renderState(): void {
   const playback = online ? state?.playback : null;
   const [targetId] = select('play-target').value.split(':'); const target = state?.devices.find(item => item.id === targetId);
   button('play').disabled = !mine || busy || !!playback || !target?.armed || !select('play-pattern').value;
+  const requirement = !online ? '先重新连接本地服务。' : !mine ? '先获取本地控制权。' : busy ? '等待当前操作结束。' : playback ? '当前模式播放中，可暂停或取消。' : !select('play-pattern').value ? '先在编辑器保存一个模式。' : !target?.connected ? '先连接所选虚拟设备。' : !target.armed ? '先启用所选虚拟设备的控制。' : '条件已就绪，可播放所选的已保存模式。';
+  if (el('play-requirement').textContent !== requirement) el('play-requirement').textContent = requirement;
+
   button('pause').disabled = !mine || busy || !playback; button('pause').textContent = playback?.status === 'paused' ? '继续播放' : '暂停';
   button('cancel-play').disabled = !mine || busy || !playback;
   el('play-status').textContent = playback ? `${playback.status === 'paused' ? '已暂停' : '正在播放'} · ${playback.name} · 第 ${playback.cycle + 1} 轮 / 第 ${playback.step + 1} 步` : state?.lastPlayback === 'completed' ? '播放完成，控制已锁定' : state?.lastPlayback === 'canceled' ? '播放已取消，控制已锁定' : '尚未播放';
