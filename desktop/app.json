@@ -16,7 +16,9 @@
     "workingDirectory": "{{REPO}}",
     "environment": {
       "HB_STUDIO_PORT": "19005",
-      "HB_STUDIO_OPEN": "0"
+      "HB_STUDIO_OPEN": "0",
+      "HB_STUDIO_FILE": "{{HOME}}/Library/Application Support/HapticBridge/studio.json",
+      "HB_STUDIO_LEGACY_FILE": "{{REPO}}/.local/studio.json"
     },
     "healthPath": "health",
     "healthMarker": "haptic-bridge-studio",
@@ -24,7 +26,9 @@
     "smokeWorkingDirectory": "{{SMOKE_DIR}}",
     "smokeEnvironment": {
       "HB_STUDIO_PORT": "19015",
-      "HB_STUDIO_OPEN": "0"
+      "HB_STUDIO_OPEN": "0",
+      "HB_STUDIO_FILE": "{{SMOKE_DIR}}/studio.json",
+      "HB_STUDIO_LEGACY_FILE": "{{SMOKE_DIR}}/.local/studio.json"
     }
   }
 }
