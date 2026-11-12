@@ -98,7 +98,7 @@ export async function createStudio(options: { file: string; webRoot?: URL; sessi
     if (url.pathname.startsWith('/api/')) {
       const session = sessionFor(req, url.pathname === '/api/stop');
       if (req.method === 'GET') {
-        if (url.pathname === '/api/state') { json(res, { state: core.snapshot(session.id), revision: store.snapshot().revision }); return; }
+        if (url.pathname === '/api/state') { json(res, { state: core.snapshot(session.id), revision: store.revision }); return; }
         if (url.pathname === '/api/library') { json(res, store.snapshot()); return; }
         if (url.pathname === '/api/catalog') {
           json(res, { source: catalog.source, sha256: catalog.sha256, fetchedAt: catalog.fetchedAt, hardwareVerified: false,
@@ -115,7 +115,7 @@ export async function createStudio(options: { file: string; webRoot?: URL; sessi
           json(res, { version: 1, generatedAt: new Date().toISOString(), environment: 'local-simulation', hardwareAccess: false, credentialsIncluded: false,
             devices: snapshot.devices.map(item => ({ id: item.id, connected: item.connected, armed: item.armed, values: item.values })),
             playback: snapshot.playback ? { status: snapshot.playback.status, elapsedMs: snapshot.playback.elapsedMs, totalMs: snapshot.playback.totalMs } : null,
-            library: { revision: store.snapshot().revision, patternCount: store.snapshot().data.patterns.length },
+            library: { revision: store.revision, patternCount: store.patternCount },
             resources: { ...snapshot.resources, sessions: sessions.size, pendingRequests: pending },
             counters: counts, history: snapshot.history }); return;
         }
