@@ -66,3 +66,7 @@ Studio 只有两个虚拟设备。原始 Console 提供单独的 Intiface 接口
 ## Android 波形参数
 
 「导出 Android 波形参数」下载当前编辑值。JSON 内的 timings（毫秒）、amplitudes（0–255）和 repeat 可用于 Android API 26+ 的 VibrationEffect.createWaveform。有限周期已经展开，repeat 固定为 −1。此操作只生成文件。
+
+## 工作区与窄屏操作
+
+网页将信号与参数并列，可下载当前草稿的 Studio 模式库文件。Studio 导入会预览并要求确认替换，建议先导出原模式库。虚拟 Studio 把设备与播放控件放在编辑器旁，显示尚缺的播放条件。模式文件不包含控制权、连接或启用状态。

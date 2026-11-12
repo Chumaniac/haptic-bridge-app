@@ -22,9 +22,11 @@ const steps = preset.steps.map((step,index) => {
     time: field(row,'时长（ms）',step.durationMs,100,30000) };
 });
 const form = document.querySelector('form');
+const libraryButton = document.querySelector('#export-library');
 function clear() {
   trace.removeAttribute('d');
   exportButton.disabled = !form.checkValidity() || steps.reduce((sum,s)=>sum+s.time.valueAsNumber,0) * document.querySelector('#cycles').valueAsNumber > maxDuration;
+  libraryButton.disabled = exportButton.disabled;
   output.textContent = '参数已修改，请重新预览。';
 }
 function preview() {
@@ -55,3 +57,18 @@ exportButton.addEventListener('click', () => {
 form.addEventListener('input',clear);
 form.addEventListener('submit',event=>{event.preventDefault();preview()});
 preview();
+
+libraryButton.addEventListener('click', () => {
+  if (!form.reportValidity()) return;
+  try {
+    const name=document.querySelector('#pattern-name').value.trim();
+    if (!name || /[\u0000-\u001f\u007f]/u.test(name)) throw Error('请填写有效的模式名称。');
+    const draft=steps.map(s=>({value:s.level.valueAsNumber,durationMs:s.time.valueAsNumber})),cycles=document.querySelector('#cycles').valueAsNumber;
+    androidWaveform(draft,cycles);
+    const library={version:1,preferences:{defaultIntensity:20,defaultDurationMs:1000},patterns:[{id:crypto.randomUUID(),name,cycles,steps:draft}]};
+    const url=URL.createObjectURL(new Blob([JSON.stringify(library,null,2)],{type:'application/json'}));
+    const link=document.createElement('a');link.href=url;link.download='haptic-studio-library.json';link.click();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    output.textContent='模式已导出。在 Studio 导入前请备份当前模式库。';
+  } catch (error) { output.textContent=error.message; }
+});

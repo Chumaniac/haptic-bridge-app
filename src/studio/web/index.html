@@ -25,7 +25,7 @@
     <div class="intro"><div><p class="eyebrow">本地工作台</p><h1>模式与播放</h1><p class="muted">编排、播放与保存模式。这里的设备始终是虚拟设备，不连接真实硬件。</p></div></div>
     <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
     <div id="error" class="error" role="alert" hidden></div>
-    <section class="control-bar" aria-label="控制会话">
+    <section id="control-heading" class="control-bar" aria-label="控制会话">
       <div><span class="eyebrow">控制会话</span><strong id="control-status">正在连接本地服务…</strong><span id="lease" class="muted"></span></div>
       <div class="actions"><button id="reconnect" hidden>重新连接本地服务</button><button id="claim" class="primary" disabled>获取本地控制权</button><button id="release" disabled>释放控制权</button></div>
     </section>
@@ -45,20 +45,20 @@
           <div class="actions editor-actions"><button id="add-step" type="button">添加步骤</button><button id="save-pattern" class="primary" type="submit" disabled>保存模式</button><button id="export-android" type="button">导出 Android 波形参数</button><button id="duplicate-pattern" type="button">另存为新模式</button><button id="delete-pattern" type="button" class="text-danger" disabled>删除已存模式</button></div>
         </form>
       </section>
-      <aside class="side-stack">
+      <aside class="side-stack"><section class="device-rack" aria-labelledby="device-heading"><div class="section-heading"><div><p class="eyebrow">虚拟设备</p><h2 id="device-heading">选择虚拟设备</h2></div><span class="muted">连接 → 启用控制 → 调整强度</span></div><div id="devices" class="device-grid"></div></section>
         <section class="panel studio-play-panel" aria-labelledby="play-heading">
           <p class="eyebrow">模式播放</p><h2 id="play-heading">播放已保存模式</h2>
           <p class="hint">保存编辑后，选择已连接并启用的虚拟通道。播放期间手动强度会锁定。</p>
           <label for="play-pattern">播放模式</label><select id="play-pattern"></select>
           <label for="play-target">虚拟设备与通道</label><select id="play-target"><option value="virtual-one:0">单通道设备 · 通道 1</option><option value="virtual-duo:0">双通道设备 · 通道 1</option><option value="virtual-duo:1">双通道设备 · 通道 2</option></select>
           <div class="play-status"><strong id="play-status">尚未播放</strong><span id="play-time" class="muted">等待开始</span><progress id="play-progress" max="100" value="0" aria-label="模式播放进度"></progress></div>
-          <div class="actions playback-actions"><button id="play" class="primary" disabled>开始播放</button><button id="pause" disabled>暂停</button><button id="cancel-play" disabled>取消播放</button></div>
+          <p id="play-requirement" class="play-requirement" role="status" aria-live="polite"></p><div class="actions playback-actions"><button id="play" class="primary" disabled>开始播放</button><button id="pause" disabled>暂停</button><button id="cancel-play" disabled>取消播放</button></div>
           <p class="hint">暂停会归零；完成、取消或急停后需要重新启用。页面隐藏后释放控制权，返回时不会自动播放。</p>
         </section>
         <section class="panel" aria-labelledby="file-heading"><p class="eyebrow">本地模式库</p><h2 id="file-heading">模式库与文件</h2><p class="hint">保存到本机文件，重启后仍可载入。导入前会预览并确认替换内容。</p><div class="file-actions"><button id="export-library">导出模式库与设置</button><button id="import-library" disabled>选择文件导入</button><input id="import-file" type="file" accept="application/json,.json" hidden /></div><p id="library-summary" class="hint"></p></section>
       </aside>
     </div>
-<section class="device-rack" aria-labelledby="device-heading"><div class="section-heading"><div><p class="eyebrow">虚拟设备</p><h2 id="device-heading">选择虚拟设备</h2></div><span class="muted">连接 → 启用控制 → 调整强度</span></div><div id="devices" class="device-grid"></div></section>
+
     <details id="catalog" class="catalog-disclosure"><summary>品牌与型号资料（可选）</summary><section class="panel catalog-panel" aria-labelledby="catalog-heading"><div class="section-heading"><div><p class="eyebrow">型号资料</p><h2 id="catalog-heading">查找品牌与型号资料</h2></div><span class="badge">公开资料 · 实机未验证</span></div><label for="catalog-search">品牌或型号名称</label><input id="catalog-search" type="search" maxlength="120" placeholder="例如 Lovense、Satisfyer、小怪兽" /><p id="catalog-summary" class="hint"></p><div id="catalog-results" class="catalog-grid"></div><button id="catalog-more" hidden>显示更多资料</button><p class="hint">软件名称只说明资料对应关系。本工作台没有真实设备连接入口；目录记录、别名与通用名称不代表已验证的兼容型号。</p></section></details>
     <div class="work-grid bottom-grid">
       <section id="settings" class="panel" aria-labelledby="settings-heading"><p class="eyebrow">偏好设置</p><h2 id="settings-heading">编辑默认值</h2><p class="hint">只影响新建步骤，不修改当前设备强度，也不恢复播放。</p><form id="preferences-form"><div class="form-grid"><label>新建步骤默认强度 %<input id="default-intensity" type="number" min="0" max="100" step="1" required /></label><label>新建步骤默认时长 / 秒<input id="default-duration" type="number" min="0.1" max="30" step="0.1" required /></label></div><div class="actions"><button id="save-preferences" class="primary" type="submit" disabled>保存偏好</button><button id="reset-preferences" type="button" disabled>恢复默认偏好</button></div></form><p class="hint">模式和设置保存在本地；连接状态、控制权限和历史记录不持久保存。</p></section>
