@@ -6,7 +6,13 @@
 
 把触觉模式拆成强度和时长，先看波形，再决定如何播放。
 
-[在线试用](https://chumaniac.github.io/haptic-bridge-app/) · [桌面下载](https://github.com/Chumaniac/haptic-bridge-app/releases)
+**[打开波形编辑器 →](https://chumaniac.github.io/haptic-bridge-app/)** · [桌面下载](https://github.com/Chumaniac/haptic-bridge-app/releases)
+
+进入后，调整四段强度、时长与周期数，点击「预览波形」，再导出 Android 参数或带到本机 Studio。网页只生成波形和文件，不连接或启动实体设备。
+
+[![Haptic Bridge 的触觉阶段参数与有限周期波形预览](docs/preview/online.png)](https://chumaniac.github.io/haptic-bridge-app/)
+
+*浏览器中的参数与波形预览。点击截图即可编排。*
 
 浏览器编辑器可以调整四个阶段和周期数。预览、校验和计算都在当前页面完成。
 
