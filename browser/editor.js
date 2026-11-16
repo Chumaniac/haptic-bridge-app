@@ -22,6 +22,7 @@ const steps = preset.steps.map((step,index) => {
     time: field(row,'时长（ms）',step.durationMs,100,30000) };
 });
 const form = document.querySelector('form');
+let editorDirty=false;
 const libraryButton = document.querySelector('#export-library');
 function clear() {
   trace.removeAttribute('d');
@@ -51,10 +52,10 @@ exportButton.addEventListener('click', () => {
     const params = androidWaveform(steps.map(s=>({value:s.level.valueAsNumber,durationMs:s.time.valueAsNumber})),document.querySelector('#cycles').valueAsNumber);
     const url = URL.createObjectURL(new Blob([JSON.stringify(params,null,2)], {type:'application/json'}));
     const link = document.createElement('a'); link.href=url; link.download='android-waveform.json'; link.click();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    setTimeout(()=>URL.revokeObjectURL(url),1000);editorDirty=false;
   } catch (error) { output.textContent=error.message; }
 });
-form.addEventListener('input',clear);
+form.addEventListener('input',()=>{editorDirty=true;clear();});
 form.addEventListener('submit',event=>{event.preventDefault();preview()});
 preview();
 
@@ -68,7 +69,7 @@ libraryButton.addEventListener('click', () => {
     const library={version:1,preferences:{defaultIntensity:20,defaultDurationMs:1000},patterns:[{id:crypto.randomUUID(),name,cycles,steps:draft}]};
     const url=URL.createObjectURL(new Blob([JSON.stringify(library,null,2)],{type:'application/json'}));
     const link=document.createElement('a');link.href=url;link.download='haptic-studio-library.json';link.click();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    setTimeout(()=>URL.revokeObjectURL(url),1000);editorDirty=false;
     output.textContent='模式已导出。在 Studio 导入前请备份当前模式库。';
   } catch (error) { output.textContent=error.message; }
 });
@@ -76,3 +77,19 @@ libraryButton.addEventListener('click', () => {
 document.querySelector('#guide-edit').onclick=()=>{const field=list.querySelector('input');field.focus();field.scrollIntoView({block:'center'});};
 document.querySelector('#guide-preview').onclick=()=>form.requestSubmit();
 document.querySelector('#guide-export').onclick=()=>{if(exportButton.disabled){preview();return;}exportButton.focus();exportButton.scrollIntoView({block:'center'});};
+
+const examples={
+ wave:{name:'低强起伏',values:[0,10,20,0],durations:[1000,1000,1000,1000]},
+ double:{name:'双击提醒',values:[25,0,16,0],durations:[200,200,200,600]},
+ pulse:{name:'规律间歇',values:[18,0,18,0],durations:[600,600,600,600]},
+};
+const templateChoice=document.querySelector('#template-choice');
+function describeTemplate(){const e=examples[templateChoice.value];if(!e)return;document.querySelector('#template-detail').textContent=`${e.name} · 峰值${Math.max(...e.values)}% · 单周期${e.durations.reduce((n,v)=>n+v,0)}ms · 固定参数，不调用模型。`;}
+templateChoice.addEventListener('change',describeTemplate);
+document.querySelector('#template-load').addEventListener('click',()=>{
+ const e=examples[templateChoice.value];if(!e)return;
+ if(editorDirty&&!window.confirm('替换当前尚未导出的四段参数？需要保留时，请先预览并导出。'))return;
+ steps.forEach((s,i)=>{s.level.value=String(e.values[i]);s.time.value=String(e.durations[i]);});document.querySelector('#cycles').value='1';document.querySelector('#pattern-name').value=e.name;editorDirty=true;clear();preview();document.querySelector('#steps input').focus();document.querySelector('#steps').scrollIntoView({block:'center'});
+});
+window.addEventListener('beforeunload',event=>{if(editorDirty){event.preventDefault();event.returnValue='';}});
+describeTemplate();
