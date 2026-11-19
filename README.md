@@ -6,7 +6,7 @@
 
 把触觉模式拆成强度和时长，先看波形，再决定如何播放。
 
-**[打开波形编辑器 →](https://chumaniac.github.io/haptic-bridge-app/)** · [当前浏览器包](https://github.com/Chumaniac/haptic-bridge-app/releases/tag/showcase-2026.11.16) · [桌面 Studio（2026.11.11）](https://github.com/Chumaniac/haptic-bridge-app/releases/tag/user-2026.11.11-zh)
+**[打开波形编辑器 →](https://chumaniac.github.io/haptic-bridge-app/)** · [当前浏览器包](https://github.com/Chumaniac/haptic-bridge-app/releases/tag/showcase-2026.11.16) · [桌面 Studio（2026.11.19）](https://github.com/Chumaniac/haptic-bridge-app/releases/tag/user-2026.11.19)
 
 浏览器包用于固定节奏、波形预览与参数导出；桌面 Studio 用虚拟设备演练保存和播放。真实设备的支持范围另行核对。
 
@@ -87,3 +87,5 @@ Studio 只有两个虚拟设备。原始 Console 提供单独的 Intiface 接口
 网页将信号与参数并列，可下载当前草稿的 Studio 模式库文件。Studio 导入会预览并要求确认替换，建议先导出原模式库。虚拟 Studio 把设备与播放控件放在编辑器旁，显示尚缺的播放条件。模式文件不包含控制权、连接或启用状态。
 
 模式库上一修订、旧路径迁移及只写新文件的[显式恢复说明](docs/studio-recovery.md)。不会恢复控制权或输出，结果未确认时先核对。
+
+历史 [2026.11.11 中文桌面包](https://github.com/Chumaniac/haptic-bridge-app/releases/tag/user-2026.11.11-zh) 保留原附件与地址。
