@@ -1,3 +1,4 @@
+import { withDeferredSession } from './deferred-session.ts';
 import { chromium, type Page } from 'playwright';
 import assert from 'node:assert/strict';
 import { mkdir, mkdtemp, readFile, writeFile, rm } from 'node:fs/promises';
@@ -25,23 +26,47 @@ const single = page.locator('[data-device="virtual-one"]'); const duo = page.loc
 const patternName = '<b>本地验收</b>';
 try {
   // Navigation help stays usable while the local service is still responding.
-  let releaseSession: () => void = () => {};
-  let sessionRequested = false;
-  const delayedSession = new Promise<void>(resolve => { releaseSession = resolve; });
-  await page.route('**/api/session', async route => { sessionRequested = true; await delayedSession; await route.continue(); });
-  try {
+  await withDeferredSession(page, url, async requested => {
     await page.goto(url, { waitUntil: 'commit' });
-    await until(() => sessionRequested, 'first local session request');
+    await until(requested, 'first local session request');
     await page.getByRole('button', { name: '使用引导', exact: true }).click();
     await page.waitForFunction(() => (document.querySelector('#studio-guide') as HTMLDetailsElement).open, undefined, { timeout: 800 });
     assert.equal(state().control.busy, false);
     assert.ok(state().devices.every(item => !item.connected && !item.armed));
     scenarios.push('guide-opens-before-session-without-control');
+  });
+  await page.getByText('只读状态，获取控制权后开始', { exact: true }).waitFor();
+
+  // A genuine failed poll exposes reconnect. Repeated clicks share one in-flight bootstrap.
+  await page.route(`${url}/api/state`, route => route.abort(), { times: 1 });
+  await page.getByRole('button', { name: '重新连接本地服务', exact: true }).waitFor();
+  await page.evaluate(() => {
+    const observed = window as unknown as { reconnectFetches: number; originalFetch: typeof fetch };
+    observed.reconnectFetches = 0; observed.originalFetch = window.fetch;
+    window.fetch = (...args: Parameters<typeof fetch>) => {
+      if (args[0] === '/api/session') observed.reconnectFetches++;
+      return observed.originalFetch(...args);
+    };
+  });
+  let reconnectRequests = 0;
+  let releaseRepeatedBootstrap: () => void = () => {};
+  const reconnectGate = new Promise<void>(resolve => { releaseRepeatedBootstrap = resolve; });
+  await page.route(`${url}/api/session`, async route => { reconnectRequests++; await reconnectGate; try { await route.continue(); } catch {} });
+  try {
+    const reconnect = page.getByRole('button', { name: '重新连接本地服务', exact: true });
+    await reconnect.focus(); await reconnect.press('Enter'); await reconnect.press('Enter');
+    await until(() => reconnectRequests > 0, 'reconnect request');
+    await page.waitForTimeout(150);
+    assert.equal(await page.evaluate(() => (window as unknown as { reconnectFetches: number }).reconnectFetches), 1,
+      'repeated reconnect must share one bootstrap, even if the browser coalesces identical GETs');
+    assert.equal(reconnectRequests, 1, 'repeated reconnect must not queue session requests');
   } finally {
-    const response = page.waitForResponse(response => response.url() === `${url}/api/session`);
-    releaseSession(); await response; await page.waitForLoadState('networkidle');
-    await page.unroute('**/api/session');
+    releaseRepeatedBootstrap(); await page.unroute(`${url}/api/session`);
+    await page.evaluate(() => { window.fetch = (window as unknown as { originalFetch: typeof fetch }).originalFetch; });
   }
+  await page.getByText('只读状态，获取控制权后开始', { exact: true }).waitFor();
+  assert.ok(state().devices.every(item => !item.connected && !item.armed && item.values.every(value => value === 0)));
+  scenarios.push('reconnect-single-in-flight-no-output');
   const sessionResponse = page.waitForResponse(response => response.url() === `${url}/api/session`);
   await page.goto(url); const ownerSession = await (await sessionResponse).json() as { session: string; csrf: string };
   await page.getByText('只读状态，获取控制权后开始', { exact: true }).waitFor();

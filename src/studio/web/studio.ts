@@ -353,7 +353,7 @@ button('reset-preferences').addEventListener('click', () => void (async () => {
 input('catalog-search').addEventListener('input', () => { catalogLimit = 6; renderCatalog(); });
 button('catalog-more').addEventListener('click', () => { catalogLimit += 6; renderCatalog(); });
 
-async function bootstrap(): Promise<void> {
+async function bootstrapOnce(): Promise<void> {
   clearError();
   try {
     const response = await fetch('/api/session', { headers: headers(), signal: AbortSignal.timeout(5000), cache: 'no-store' }); const data = await response.json() as ResponseData;
@@ -363,6 +363,12 @@ async function bootstrap(): Promise<void> {
     const catalogResponse = await fetch('/api/catalog', { headers: headers(), signal: AbortSignal.timeout(5000) });
     if (!catalogResponse.ok) throw new Error('品牌资料未能载入。'); catalog = await catalogResponse.json() as CatalogData; renderCatalog(); renderState();
   } catch (error) { online = false; state = null; clearOutputs(); renderState(); fail(error); }
+}
+// Share one bounded bootstrap across keyboard repeats/reconnect clicks.
+let bootstrapPending: Promise<void> | undefined;
+function bootstrap(): Promise<void> {
+  bootstrapPending ??= bootstrapOnce().finally(() => { bootstrapPending = undefined; });
+  return bootstrapPending;
 }
 button('reconnect').addEventListener('click', () => void bootstrap());
 async function poll(): Promise<void> {
