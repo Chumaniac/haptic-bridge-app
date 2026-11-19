@@ -1,6 +1,6 @@
 {
   "name": "haptic-bridge",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "Local, capability-based device control with an Intiface adapter and explicit simulation mode.",
