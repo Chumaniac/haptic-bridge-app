@@ -1,6 +1,6 @@
 # 第一次使用虚拟 Studio
 
-浏览器[波形编辑器](https://chumaniac.github.io/haptic-bridge-app/)无需安装和账号。展开“从固定节奏样例开始”，选样例并载入四段参数，修改后预览，再导出 Android 参数或 Studio 模式库；网页只生成图形和文件，不连接设备。
+浏览器[波形编辑器](https://chumaniac.github.io/haptic-bridge-app/)无需安装和账号。在“固定节奏样例”中选样例并载入，按需增删或调整阶段，波形随输入实时更新，再导出 Android 参数或 Studio 模式库；也可用“打开文件”重新载入之前导出的模式库。网页只生成图形和文件，不连接设备。
 
 本机完整程序从本仓库 README 的下载入口取得，无需另装 Node；源码启动需要 Node 24，见 [macOS 程序说明](../desktop/README.md)。当前 macOS 程序采用本机临时签名，尚未公证发行。保留旧程序、模式库与成功导出，不因启动问题清空资料；恢复见 [模式库说明](studio-recovery.md)。本页的会话改动属于当前源码，既有发布附件保留原版本。
 

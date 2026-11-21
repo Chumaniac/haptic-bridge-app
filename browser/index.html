@@ -1,8 +1,242 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="编辑一段触觉模式的强度和时长，在浏览器中预览波形。"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'"><link rel="stylesheet" href="./style.css"><link rel="icon" href="./haptic.svg"><title>波形编辑器 · Haptic Bridge</title></head>
-<body><header><img src="./haptic.svg" width="34" height="34" alt=""><strong>Haptic Bridge</strong><a href="https://github.com/Chumaniac/haptic-bridge-app">本机安装 ↗</a></header>
-<a class="skip" href="#main">跳到波形编辑</a><main id="main"><div class="page-heading"><div><p class="eyebrow">PATTERN LAB</p><h1>波形编辑器</h1><p>给应用开发者和触觉交互设计者：先用强度、时长与周期编排一段节奏，再查看波形和总时长，把参数带到应用或本机虚拟 Studio。</p></div><span class="mode-label">仅模拟</span></div><details class="pattern-guide"><summary>第一次编排：改一段节奏，看看再导出</summary><p>网页无需账号或设备，只绘图，不产生实体反馈。强度 0% 表示停顿；1000 ms 是 1 秒。</p><ol><li><strong>编辑四个阶段</strong><p>改强度和时长，再选重复周期。可先保留默认值，观察一段起伏与停顿。</p><button type="button" id="guide-edit">去修改阶段参数</button></li><li><strong>看清持续时间</strong><p>预览会画出单周期波形并显示总时长。强度为 0–100%，每步 100–30000 ms，总时长最多 10 分钟。</p><button type="button" id="guide-preview">预览当前参数</button></li><li><strong>选择带走的格式</strong><p>Android 参数供应用调用平台接口；Studio 文件用于继续编辑。导入 Studio 前先备份，确认后才替换模式库与偏好。</p><button type="button" id="guide-export">定位参数导出</button></li></ol></details>
-<details class="pattern-guide" id="template-examples"><summary>从固定节奏样例开始</summary><p>选择一个公开参数样例，先看形状，再明确载入四段编辑。这里不接入私有工作台的描述生成端口。</p><label for="template-choice">节奏样例</label><select id="template-choice"><option value="wave">低强起伏</option><option value="double">双击提醒</option><option value="pulse">规律间歇</option></select><p id="template-detail" role="status" aria-live="polite"></p><button id="template-load" type="button">载入四段参数</button><p>载入后可调整并预览；导出Android参数或模式库，在本机Studio继续。导入前先备份原模式库。</p></details><div class="editor-workspace">
-<section class="scope-panel"><div class="scope-heading"><h2>信号预览</h2><span>0—100% · 单周期</span></div><svg id="scope" viewBox="0 0 600 140" role="img" aria-label="单周期强度波形"><path class="grid" d="M0 20H600 M0 70H600 M0 120H600"/><path id="trace" fill="none"/></svg><output aria-live="polite">等待预览</output><p class="scope-caption">横轴为持续时间，纵轴为强度。导出保留全部周期。</p></section>
-<form><div class="heading"><h2>模式参数</h2><label>周期数 <input id="cycles" type="number" min="1" max="10" step="1" value="1" required></label></div><label class="pattern-label">模式名称<input id="pattern-name" maxlength="48" value="浏览器草稿" autocomplete="off" required></label><div id="steps"></div><div class="wave-actions"><button>预览波形</button><button id="export-android" type="button">导出 Android 波形参数</button><button id="export-library" type="button">在本机 Studio 继续</button></div><p class="handoff-note">下载模式库文件，在 Studio 选择“选择文件导入”。导入前可先备份，确认后会替换本机模式库与偏好。</p></form>
-</div></main><script type="module" src="./editor.js"></script></body></html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="编辑一段触觉模式的强度和时长，在浏览器中预览波形并导出参数。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<link rel="stylesheet" href="./style.css">
+<link rel="icon" href="./haptic.svg">
+<title>波形编辑器 · Haptic Bridge</title>
+</head>
+<body>
+<a class="skip" href="#main">跳到波形编辑</a>
+
+<header class="app-bar">
+  <div class="app-bar-inner">
+    <a class="brand" href="./" aria-label="Haptic Bridge 波形编辑器">
+      <img src="./haptic.svg" width="24" height="24" alt="">
+      <span>Haptic Bridge</span>
+    </a>
+    <span class="badge" title="网页只绘制波形和生成文件，不连接或启动实体设备">仅模拟</span>
+    <nav class="app-actions" aria-label="页面工具">
+      <button type="button" class="ghost" id="open-shortcuts" aria-haspopup="dialog">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 13h.01M18 13h.01M9 16h6M10 13h.01M14 13h.01"/></svg>
+        <span>快捷键</span>
+      </button>
+      <button type="button" class="ghost icon-only" id="theme-toggle" aria-label="切换深色或浅色外观">
+        <svg class="icon theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+      <a class="ghost" href="https://github.com/Chumaniac/haptic-bridge-app" rel="noopener">
+        <span>本机安装</span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v10M7 17 17 7"/></svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="page-heading">
+    <h1>波形编辑器</h1>
+    <p>用强度、时长与周期编排一段触觉节奏，边改边看波形和总时长，再把参数带到 Android 应用或本机虚拟 Studio。</p>
+  </div>
+
+  <div class="workspace">
+    <section class="panel scope-panel" id="scope-panel" aria-labelledby="scope-title" tabindex="-1">
+      <div class="panel-heading">
+        <h2 id="scope-title">信号预览</h2>
+        <div class="segmented" role="radiogroup" aria-label="预览范围">
+          <label><input type="radio" name="view" value="cycle" checked><span>单周期</span></label>
+          <label><input type="radio" name="view" value="full"><span>完整模式</span></label>
+        </div>
+      </div>
+
+      <div class="scope-frame">
+        <div class="scope-axis" aria-hidden="true"><span>100%</span><span>50%</span><span>0%</span></div>
+        <svg id="scope" viewBox="0 0 600 160" preserveAspectRatio="none" role="img" aria-label="强度波形">
+          <path class="grid" d="M0 20H600M0 80H600M0 140H600"/>
+          <rect id="segment" class="segment" x="0" y="20" width="0" height="120"/>
+          <path id="cycle-marks" class="cycle-marks"/>
+          <path id="area" class="area"/>
+          <path id="trace" class="trace" fill="none"/>
+        </svg>
+        <div class="scope-time" aria-hidden="true"><span>0</span><span id="scope-end"></span></div>
+      </div>
+
+      <dl class="stats">
+        <div><dt>单周期</dt><dd id="stat-period">—</dd></div>
+        <div><dt>总时长</dt><dd id="stat-total">—</dd></div>
+        <div><dt>峰值强度</dt><dd id="stat-peak">—</dd></div>
+        <div><dt>阶段</dt><dd id="stat-steps">—</dd></div>
+      </dl>
+
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+
+      <div class="export">
+        <h3>导出</h3>
+        <div class="export-actions">
+          <button type="button" class="primary" id="export-android">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+            <span>导出 Android 波形参数</span>
+          </button>
+          <button type="button" id="copy-kotlin">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            <span>复制 Kotlin 代码</span>
+          </button>
+          <button type="button" id="export-library">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/></svg>
+            <span>在本机 Studio 继续</span>
+          </button>
+        </div>
+        <p class="hint">Android 参数用于 API 26+ 的 <code>VibrationEffect.createWaveform</code>。Studio 文件在 Studio 中「选择文件导入」，导入会替换本机模式库与偏好，请先备份。</p>
+      </div>
+    </section>
+
+    <form class="panel editor" id="editor" novalidate aria-labelledby="editor-title">
+      <div class="panel-heading">
+        <h2 id="editor-title">模式参数</h2>
+        <div class="heading-actions">
+          <button type="button" class="ghost" id="import-library">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 21h14"/></svg>
+            <span>打开文件</span>
+          </button>
+          <button type="button" class="ghost" id="reset-draft">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"/></svg>
+            <span>重置</span>
+          </button>
+          <input type="file" id="import-file" accept="application/json,.json" hidden>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <label class="field grow" for="pattern-name">
+          <span>模式名称</span>
+          <input id="pattern-name" type="text" maxlength="48" autocomplete="off" spellcheck="false">
+        </label>
+        <label class="field" for="cycles">
+          <span>周期数</span>
+          <input id="cycles" type="number" inputmode="numeric" min="1" max="10" step="1">
+        </label>
+      </div>
+
+      <div class="template-row" id="template-examples">
+        <label class="field grow" for="template-choice">
+          <span>固定节奏样例</span>
+          <select id="template-choice">
+            <option value="wave">低强起伏</option>
+            <option value="double">双击提醒</option>
+            <option value="pulse">规律间歇</option>
+          </select>
+        </label>
+        <button type="button" id="template-load">载入样例</button>
+      </div>
+      <p class="hint" id="template-detail" role="status" aria-live="polite"></p>
+
+      <div class="steps-heading" aria-hidden="true">
+        <span>#</span><span>强度</span><span>时长</span><span></span>
+      </div>
+      <ol id="steps" class="steps"></ol>
+
+      <div class="steps-footer">
+        <button type="button" id="add-step">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span>添加阶段</span>
+        </button>
+        <span class="count" id="step-count"></span>
+      </div>
+    </form>
+  </div>
+
+  <details class="guide">
+    <summary>第一次编排：改一段节奏，看看再导出</summary>
+    <p>网页无需账号或设备，只绘图，不产生实体反馈。强度 0% 表示停顿；1000 ms 是 1 秒。草稿只保存在当前浏览器。</p>
+    <ol>
+      <li>
+        <strong>编辑阶段</strong>
+        <p>改强度和时长，再选重复周期。可以增删、复制或调整阶段顺序，最多 64 个阶段。</p>
+        <button type="button" id="guide-edit">去修改阶段参数</button>
+      </li>
+      <li>
+        <strong>看清持续时间</strong>
+        <p>波形随输入实时更新。强度为 0–100%，每步 100–30000 ms，总时长最多 10 分钟。</p>
+        <button type="button" id="guide-preview">预览当前参数</button>
+      </li>
+      <li>
+        <strong>选择带走的格式</strong>
+        <p>Android 参数供应用调用平台接口；Studio 文件用于继续编辑。导入 Studio 前先备份原模式库。</p>
+        <button type="button" id="guide-export">定位参数导出</button>
+      </li>
+    </ol>
+  </details>
+</main>
+
+<footer class="site-footer">
+  <p>网页只生成波形和文件，不连接或启动实体设备。<a href="https://github.com/Chumaniac/haptic-bridge-app/blob/main/docs/first-session.md" rel="noopener">首次使用说明</a></p>
+</footer>
+
+<dialog id="shortcuts" aria-labelledby="shortcuts-title">
+  <div class="dialog-heading">
+    <h2 id="shortcuts-title">快捷键</h2>
+    <button type="button" class="ghost icon-only" data-close aria-label="关闭">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <dl class="shortcut-list">
+    <div><dt>添加阶段</dt><dd><kbd data-mod></kbd><kbd>Enter</kbd></dd></div>
+    <div><dt>上移 / 下移当前阶段</dt><dd><kbd>Alt</kbd><kbd>↑</kbd><kbd>↓</kbd></dd></div>
+    <div><dt>删除当前阶段</dt><dd><kbd>Alt</kbd><kbd>Delete</kbd></dd></div>
+    <div><dt>导出 Studio 模式库</dt><dd><kbd data-mod></kbd><kbd>S</kbd></dd></div>
+    <div><dt>导出 Android 参数</dt><dd><kbd data-mod></kbd><kbd>E</kbd></dd></div>
+    <div><dt>切换单周期 / 完整模式</dt><dd><kbd>V</kbd></dd></div>
+    <div><dt>打开本面板</dt><dd><kbd>?</kbd></dd></div>
+  </dl>
+</dialog>
+
+<dialog id="import-dialog" aria-labelledby="import-title">
+  <form method="dialog" id="import-form">
+    <div class="dialog-heading">
+      <h2 id="import-title">选择要载入的模式</h2>
+      <button type="button" class="ghost icon-only" data-close aria-label="关闭">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <p class="hint">文件包含多个模式。网页一次编辑一个，其余模式不会被修改。</p>
+    <div class="choice-list" id="import-choices" role="radiogroup" aria-labelledby="import-title"></div>
+    <div class="dialog-actions">
+      <button type="button" data-close>取消</button>
+      <button type="submit" class="primary" value="load">载入此模式</button>
+    </div>
+  </form>
+</dialog>
+
+<template id="step-template">
+  <li class="step">
+    <span class="step-index" aria-hidden="true"></span>
+    <div class="step-level">
+      <input class="level-range" type="range" min="0" max="100" step="1">
+      <label class="unit"><input class="level" type="number" inputmode="numeric" min="0" max="100" step="1"><span aria-hidden="true">%</span></label>
+    </div>
+    <label class="unit"><input class="time" type="number" inputmode="numeric" min="100" max="30000" step="100"><span aria-hidden="true">ms</span></label>
+    <div class="step-actions">
+      <button type="button" class="ghost icon-only" data-action="up">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      </button>
+      <button type="button" class="ghost icon-only" data-action="down">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </button>
+      <button type="button" class="ghost icon-only" data-action="duplicate">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+      </button>
+      <button type="button" class="ghost icon-only danger" data-action="remove">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>
+      </button>
+    </div>
+    <p class="step-error" hidden></p>
+  </li>
+</template>
+
+<script type="module" src="./editor.js"></script>
+</body>
+</html>

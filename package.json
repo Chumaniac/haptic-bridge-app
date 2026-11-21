@@ -17,6 +17,7 @@
     "test:studio:resources": "node --expose-gc scripts/studio-performance.ts",
     "test": "node --test test/*.test.ts",
     "test:browser": "node scripts/browser-check.ts",
+    "test:editor": "npm run build:browser && node scripts/editor-browser-check.ts",
     "test:load": "node --expose-gc scripts/benchmark.ts",
     "test:stress": "node --expose-gc scripts/stress.ts",
     "test:soak": "node --expose-gc scripts/soak.ts",
