@@ -1,4 +1,3 @@
-import { androidWaveform } from './android-waveform.ts';
 import type { StudioState } from '../core.ts';
 import type { Persisted, PatternDraft, Library, Pattern } from '../schema.ts';
 
@@ -324,9 +323,11 @@ button('play').addEventListener('click', () => void action(async () => {
 }));
 button('pause').addEventListener('click', () => void action(async () => { await request('/api/playback', { action: state?.playback?.status === 'paused' ? 'resume' : 'pause' }); }));
 button('cancel-play').addEventListener('click', () => void action(async () => { generation++; clearOutputs(); await request('/api/playback', { action: 'cancel' }); }));
-button('export-android').addEventListener('click', () => {
+button('export-android').addEventListener('click', async () => {
   try {
     const current = readDraft();
+    const { androidWaveform } = await import('./android-waveform.ts');
+    if (destroying) return;
     const params = androidWaveform(current.steps, current.cycles);
     download(new Blob([JSON.stringify(params,null,2)], {type:'application/json'}), 'android-waveform.json');
     notify('已导出当前草稿的 Android 波形参数。');

@@ -13,7 +13,10 @@ let url = await app.listen(0);
 const browser = await chromium.launch({ executablePath: process.env.HB_CHROME_PATH ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true });
 const context = await browser.newContext({ viewport: { width: 1440, height: 1100 }, colorScheme: 'light' });
 const errors: string[] = []; const externalRequests: string[] = []; let sockets = 0; const scenarios: string[] = [];
-const page = await context.newPage(); page.setDefaultTimeout(7000); page.on('pageerror', error => errors.push(error.message)); page.on('websocket', () => sockets++);
+const page = await context.newPage();
+const requestedScripts: string[] = [];
+page.on('request', request => { if (request.resourceType() === 'script') requestedScripts.push(new URL(request.url()).pathname); });
+ page.setDefaultTimeout(7000); page.on('pageerror', error => errors.push(error.message)); page.on('websocket', () => sockets++);
 await context.route('**/*', async route => { const request = new URL(route.request().url()); if (request.hostname !== '127.0.0.1') { externalRequests.push(request.origin); await route.abort(); } else await route.continue(); });
 const state = () => app.core.snapshot('test-observer');
 async function until(check: () => boolean, description: string, timeout = 7000): Promise<void> {
@@ -73,6 +76,13 @@ try {
   assert.ok(state().devices.every(item => !item.connected && !item.armed && item.values.every(value => value === 0)));
   await page.getByRole('link', { name: '虚拟设备 · 只读', exact: true }).waitFor();
   scenarios.push('startup-no-connect-no-output');
+  assert.ok(!requestedScripts.includes('/android-waveform.js'));
+  assert.ok(!requestedScripts.includes('/proposals.js'));
+  const waveformDownload = page.waitForEvent('download');
+  await page.locator('#export-android').click();
+  assert.equal((await waveformDownload).suggestedFilename(), 'android-waveform.json');
+  assert.equal(requestedScripts.filter(path => path === '/android-waveform.js').length, 1);
+  scenarios.push('optional-export-loads-on-demand');
   await page.getByRole('button', { name: '获取本地控制权', exact: true }).click();
   await page.getByRole('link', { name: '虚拟设备 · 本窗口控制', exact: true }).waitFor();
   await single.getByRole('button', { name: '连接虚拟设备', exact: true }).click();
