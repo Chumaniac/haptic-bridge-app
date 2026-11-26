@@ -109,6 +109,8 @@ test('request limits reject excess traffic while authenticated emergency stop re
     let limited = false;
     for (let i = 0; i < 170; i++) { if ((await a.get('/api/state')).status === 429) { limited = true; break; } }
     assert.equal(limited, true);
+    const observer = await f.client();
+    assert.equal((await (await observer.get('/api/diagnostics')).json()).counters.rateLimited, 1);
     assert.equal((await a.post('/api/stop', {})).status, 200);
     assert.equal((await fetch(`${f.url}/api/stop`, { method: 'POST', headers: { ...a.headers, 'x-csrf-token': '0'.repeat(64) }, body: '{}' })).status, 403);
   } finally { await f.close(); }
@@ -136,4 +138,22 @@ test('oversized import returns the size error and leaves the library usable', as
   } finally {
     await f.close();
   }
+});
+
+test('diagnostics distinguish invalid requests from failed operations', async (t) => {
+  const f = await fixture();
+  try {
+    const a = await f.client();
+    const before = (await (await a.get('/api/diagnostics')).json()).counters;
+    assert.equal((await a.get('/api/unknown')).status, 404);
+    const unavailable = t.mock.method(f.app.store, 'snapshot', () => { throw new Error('synthetic storage failure'); });
+    assert.equal((await a.get('/api/library')).status, 500);
+    unavailable.mock.restore();
+    assert.equal((await a.get('/api/library')).status, 200);
+    const after = (await (await a.get('/api/diagnostics')).json()).counters;
+    assert.equal(after.completed - before.completed, 4);
+    assert.equal(after.clientErrors - before.clientErrors, 1);
+    assert.equal(after.serverErrors - before.serverErrors, 1);
+    assert.equal(after.rateLimited - before.rateLimited, 0);
+  } finally { await f.close(); }
 });

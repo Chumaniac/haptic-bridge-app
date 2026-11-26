@@ -33,7 +33,7 @@ export async function createStudio(options: { file: string; webRoot?: URL; sessi
   }));
   const sessions = new Map<string, Session>();
   let port = 0; let closing = false; let pending = 0;
-  const counts = { rejected: 0, requests: 0 };
+  const counts = { rejected: 0, requests: 0, completed: 0, aborted: 0, clientErrors: 0, rateLimited: 0, serverErrors: 0 };
   const cleanup = setInterval(() => {
     for (const [key, session] of sessions) if (session.expires <= Date.now() || Date.now() - session.lastUse > 30000) { core.expire(key); sessions.delete(key); }
   }, 250);
@@ -75,6 +75,14 @@ export async function createStudio(options: { file: string; webRoot?: URL; sessi
     catch { throw new AppError('JSON', 'JSON 格式不正确，已有资料没有改变。'); }
   }
   const server = createServer({ requestTimeout: 5000, headersTimeout: 5000, maxHeaderSize: 8192 }, (req, res) => {
+    counts.requests++;
+    res.once('finish', () => {
+      counts.completed++;
+      if (res.statusCode >= 500) counts.serverErrors++;
+      else if (res.statusCode >= 400) counts.clientErrors++;
+      if (res.statusCode === 429) counts.rateLimited++;
+    });
+    res.once('close', () => { if (!res.writableFinished) counts.aborted++; });
     void handle(req, res).catch(error => {
       counts.rejected++;
       if (res.headersSent) { res.end(); return; }
@@ -96,7 +104,6 @@ export async function createStudio(options: { file: string; webRoot?: URL; sessi
     const origin = `http://${host}`;
     requireCondition(!req.headers.origin || req.headers.origin === origin, 'ORIGIN', '只接受当前本地工作台的请求。', 403);
     const url = new URL(req.url ?? '/', origin);
-    counts.requests++;
     if (req.method === 'GET' && url.pathname === '/health') {
       json(res, { application: 'haptic-bridge-studio', version: 1, simulation: true }); return;
     }
