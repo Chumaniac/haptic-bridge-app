@@ -120,6 +120,13 @@ async function flushOutput(): Promise<void> {
 }
 function renderState(): void {
   const mine = online && state?.control.mine === true;
+  const indicator = el('control-indicator');
+  const ownership = !online ? '离线' : mine ? '本窗口控制' : state?.control.busy ? '其他窗口控制' : '只读';
+  const label = '虚拟设备 · ' + ownership;
+  if (indicator.textContent !== label) {
+    indicator.textContent = label;
+    indicator.dataset.owned = String(mine);
+  }
   button('claim').disabled = !online || busy || !!state?.control.busy;
   button('release').disabled = !mine || busy;
   button('stop-all').disabled = !online;
@@ -206,8 +213,11 @@ function renderEditor(): void {
     }
     const actions = text('div', '', 'step-actions');
     for (const operation of ['up', 'down', 'remove'] as const) {
-      const target = document.createElement('button'); target.type = 'button'; target.textContent = operation === 'up' ? '↑' : operation === 'down' ? '↓' : '×';
-      target.setAttribute('aria-label', `第 ${index + 1} 步${operation === 'up' ? '上移' : operation === 'down' ? '下移' : '删除'}`);
+      const label = operation === 'up' ? '上移' : operation === 'down' ? '下移' : '删除';
+      const target = document.createElement('button');
+      target.type = 'button';
+      target.textContent = label;
+      target.setAttribute('aria-label', `第 ${index + 1} 步${label}`);
       target.disabled = operation === 'up' ? index === 0 : operation === 'down' ? index === draft.steps.length - 1 : draft.steps.length === 1;
       target.addEventListener('click', () => {
         draft = readDraft();

@@ -71,8 +71,10 @@ try {
   await page.goto(url); const ownerSession = await (await sessionResponse).json() as { session: string; csrf: string };
   await page.getByText('只读状态，获取控制权后开始', { exact: true }).waitFor();
   assert.ok(state().devices.every(item => !item.connected && !item.armed && item.values.every(value => value === 0)));
+  await page.getByRole('link', { name: '虚拟设备 · 只读', exact: true }).waitFor();
   scenarios.push('startup-no-connect-no-output');
   await page.getByRole('button', { name: '获取本地控制权', exact: true }).click();
+  await page.getByRole('link', { name: '虚拟设备 · 本窗口控制', exact: true }).waitFor();
   await single.getByRole('button', { name: '连接虚拟设备', exact: true }).click();
   assert.equal(await single.getByRole('slider').isDisabled(), true);
   await single.getByRole('button', { name: '启用控制', exact: true }).click();
@@ -296,6 +298,7 @@ try {
   await page.waitForFunction(() => !(document.querySelector('[data-device="virtual-one"] input[type="range"]') as HTMLInputElement)?.disabled);
   await slider.focus(); await slider.press('ArrowRight'); await until(() => state().devices[0]!.values[0] === 1, 'output before network outage');
   await context.setOffline(true); await page.getByRole('button', { name: '重新连接本地服务', exact: true }).waitFor();
+  await page.getByRole('link', { name: '虚拟设备 · 离线', exact: true }).waitFor();
   assert.equal(await slider.isDisabled(), true);
   await until(() => !state().control.busy, 'real wall-clock heartbeat timeout', 10000);
   assert.ok(state().devices.every(device => !device.armed && device.values.every(value => value === 0)));
