@@ -124,3 +124,16 @@ test('oversized imports and unknown device capabilities fail without changing sa
     assert.equal(f.app.store.snapshot().revision, 0); assert.ok(f.app.core.snapshot('observer').devices.every(device => !device.connected));
   } finally { await f.close(); }
 });
+
+test('oversized import returns the size error and leaves the library usable', async () => {
+  const f = await fixture();
+  try {
+    const client = await f.client();
+    const response = await client.post('/api/import/preview', { text: 'x'.repeat(131072) });
+    assert.equal(response.status, 413);
+    assert.equal((await response.json()).error.code, 'BODY_LIMIT');
+    assert.equal((await (await client.get('/api/library')).json()).revision, client.initial.library.revision);
+  } finally {
+    await f.close();
+  }
+});

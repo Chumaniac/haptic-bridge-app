@@ -20,6 +20,17 @@ export async function createStudio(options: { file: string; webRoot?: URL; sessi
   const core = new StudioCore(options.leaseMs === undefined ? {} : { leaseMs: options.leaseMs });
   const catalog = readCatalog();
   const transports = connectionLabels(catalog);
+  // This public catalog is fixed for the lifetime of the Studio instance.
+  const publicCatalog = Buffer.from(JSON.stringify({
+    source: catalog.source, sha256: catalog.sha256, fetchedAt: catalog.fetchedAt,
+    hardwareVerified: false,
+    profiles: catalog.profiles.map(item => ({
+      id: item.id, name: item.name, models: item.models, source: item.source, evidence: item.evidence,
+      connectionMethods: transports.get(item.id) ?? ['资料未同步，连接方式待核对'],
+      tools: ['Buttplug 公开设备资料', 'Intiface Central（本工作台未接入）',
+        ...(item.id === 'lovense' ? ['Lovense 官方 API（本工作台未接入）'] : [])],
+    })),
+  }));
   const sessions = new Map<string, Session>();
   let port = 0; let closing = false; let pending = 0;
   const counts = { rejected: 0, requests: 0 };
@@ -47,13 +58,18 @@ export async function createStudio(options: { file: string; webRoot?: URL; sessi
     session.lastUse = Date.now();
     return session;
   }
-  async function body(req: IncomingMessage): Promise<unknown> {
+  async function body(req: IncomingMessage, maximum: number = limits.fileBytes): Promise<unknown> {
     requireCondition(req.headers['content-type']?.split(';')[0]?.trim() === 'application/json', 'CONTENT_TYPE', '仅接受 JSON 文件内容。', 415);
+    const tooLarge = `内容过大，不能超过 ${Math.ceil(maximum / 1024)} KiB。`;
+    if (req.headers['content-length'] !== undefined) {
+      requireCondition(Number(req.headers['content-length']) <= maximum, 'BODY_LIMIT', tooLarge, 413);
+    }
     const chunks: Buffer[] = []; let bytes = 0;
-    for await (const chunk of req) {
+    // Preserve the response channel so the client receives 413 on a streamed upload.
+    for await (const chunk of req.iterator({ destroyOnReturn: false })) {
       bytes += chunk.length;
-      requireCondition(bytes <= limits.fileBytes, 'BODY_LIMIT', '内容过大，文件不能超过 128 KiB。', 413);
-      chunks.push(Buffer.from(chunk));
+      requireCondition(bytes <= maximum, 'BODY_LIMIT', tooLarge, 413);
+      chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
     }
     try { return JSON.parse(Buffer.concat(chunks).toString('utf8')); }
     catch { throw new AppError('JSON', 'JSON 格式不正确，已有资料没有改变。'); }
@@ -62,6 +78,7 @@ export async function createStudio(options: { file: string; webRoot?: URL; sessi
     void handle(req, res).catch(error => {
       counts.rejected++;
       if (res.headersSent) { res.end(); return; }
+      if (error instanceof AppError && error.code === 'BODY_LIMIT') res.setHeader('Connection', 'close');
       if (error instanceof AppError) json(res, { error: { code: error.code, message: error.message } }, error.status);
       else if (error instanceof z.ZodError) json(res, { error: { code: 'VALIDATION', message: '资料格式或数值不正确。最多 20 个模式、每个 64 步，总时长不超过十分钟。' } }, 400);
       else json(res, { error: { code: 'INTERNAL', message: '本地操作失败，请重新连接后再试。' } }, 500);
@@ -101,10 +118,8 @@ export async function createStudio(options: { file: string; webRoot?: URL; sessi
         if (url.pathname === '/api/state') { json(res, { state: core.snapshot(session.id), revision: store.revision }); return; }
         if (url.pathname === '/api/library') { json(res, store.snapshot()); return; }
         if (url.pathname === '/api/catalog') {
-          json(res, { source: catalog.source, sha256: catalog.sha256, fetchedAt: catalog.fetchedAt, hardwareVerified: false,
-            profiles: catalog.profiles.map(item => ({ id: item.id, name: item.name, models: item.models, source: item.source, evidence: item.evidence,
-              connectionMethods: transports.get(item.id) ?? ['资料未同步，连接方式待核对'],
-              tools: ['Buttplug 公开设备资料', 'Intiface Central（本工作台未接入）', ...(item.id === 'lovense' ? ['Lovense 官方 API（本工作台未接入）'] : [])] })) }); return;
+          res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(publicCatalog); return;
         }
         if (url.pathname === '/api/export') {
           res.setHeader('Content-Disposition', 'attachment; filename="haptic-studio-library.json"'); json(res, store.snapshot().data); return;
